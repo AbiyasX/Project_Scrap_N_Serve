@@ -16,6 +16,10 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float dashForce = 10f;
     [SerializeField] bool canDash = true;
     bool isDashing = false;
+    [Header("Interaction")]
+    [SerializeField] float interactDistance = 3f;
+    [SerializeField] private float rayHeight = 1.5f;
+    [SerializeField] private float yOffset = 0.5f;
 
     private PickUpSystem interactObj;
 
@@ -30,6 +34,7 @@ public class PlayerControls : MonoBehaviour
     private void OnEnable()
     {
         inputActions.Player.Enable();
+        inputActions.Player.Interact.performed += Interact_performed;
         // move input
         inputActions.Player.Move.performed += OnMove;
         inputActions.Player.Move.canceled += OnMove;
@@ -42,8 +47,11 @@ public class PlayerControls : MonoBehaviour
         inputActions.Player.Dash.performed += Dash_performed;
     }
 
+    
+
     private void OnDisable()
     {
+        inputActions.Player.Interact.performed -= Interact_performed;
         // move input
         inputActions.Player.Move.performed -= OnMove;
         inputActions.Player.Move.canceled -= OnMove;
@@ -56,6 +64,37 @@ public class PlayerControls : MonoBehaviour
         inputActions.Player.Dash.performed -= Dash_performed;
         inputActions.Player.Disable();
     }
+
+    private void Interact_performed(InputAction.CallbackContext obj)
+    {
+        Vector3 origin = transform.position + Vector3.up * rayHeight;
+        Vector3 direction = (transform.forward + Vector3.down * yOffset).normalized;
+
+        if (Physics.Raycast(origin, direction, out RaycastHit hit, interactDistance, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Collide))
+        {
+            Iinteract interactable = hit.collider.GetComponent<Iinteract>();
+            if (interactable != null)
+            {
+                interactable.Interact();
+            }
+        }
+    }
+
+    // --- Draw Gizmo to visualize ray ---
+    private void OnDrawGizmosSelected()
+    {
+        Vector3 origin = transform.position + Vector3.up * rayHeight;
+        Vector3 direction = (transform.forward + Vector3.down * yOffset).normalized;
+
+        // Draw the ray line
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(origin, origin + direction * interactDistance);
+
+        // Draw a sphere at the end of the ray to visualize hit area
+        Gizmos.color = new Color(0, 1, 0, 0.3f);
+        Gizmos.DrawWireSphere(origin + direction * interactDistance, 0.2f);
+    }
+
     private void Dash_performed(InputAction.CallbackContext obj)
     {
         player_dash();

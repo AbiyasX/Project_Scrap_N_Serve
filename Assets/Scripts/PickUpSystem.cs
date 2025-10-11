@@ -35,24 +35,26 @@ public class PickUpSystem : MonoBehaviour
 
     private void DetectItem()
     {
-        RaycastHit hit;
-        bool detected = Physics.SphereCast(
-            transform.position,
-            sphereRadius,
-            transform.forward,
-            out hit,
-            pickupRange,
-            itemLayer
-        );
+        Collider[] hits = Physics.OverlapSphere(transform.position + transform.forward * pickupRange * 0.5f, sphereRadius, itemLayer);
 
-        if (detected)
+        if (hits.Length > 0)
         {
-            if (currentItem != hit.collider.gameObject)
+            Collider closest = hits[0];
+            float closestDist = Vector3.Distance(transform.position, closest.transform.position);
+
+            foreach (var hit in hits)
             {
-                currentItem = hit.collider.gameObject;
+                float dist = Vector3.Distance(transform.position, hit.transform.position);
+                if (dist < closestDist)
+                {
+                    closest = hit;
+                    closestDist = dist;
+                }
             }
+
+            currentItem = closest.gameObject;
         }
-        else if (currentItem != null)
+        else
         {
             currentItem = null;
         }

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ece3ca2215f2f2b47af2d20b6d5370bf, type: 3}
+  m_Name: FacilitiesData
+  m_EditorClassIdentifier: Assembly-CSharp::FacilitiesData
+  facilityName: Metal Factory Dummy
+  facilityCost: 1
+  facilityRepairCost: 1
+  facilityUpgrade: 1
+  facilityLevel: 1
+  facilityCookTime: 5
+  facilityModel: {fileID: 919132149155446097, guid: 33817a8b9fda0ab489f57888c6ac1e8e, type: 3}
+  facilityProductionModel: {fileID: 919132149155446097, guid: b8ec92fd50c09ec47b6767214cb4dae9, type: 3}
