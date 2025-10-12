@@ -22,11 +22,12 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private float yOffset = 0.5f;
 
     private PickUpSystem interactObj;
-
+    Animator playerAnim;
     private void Awake()
     {
         inputActions = new InputSystem_Actions();
         interactObj = GetComponent<PickUpSystem>();
+        playerAnim = GetComponent<Animator>();
     }
 
     #region InputSystem !!Do Not Edit!!
@@ -137,7 +138,14 @@ public class PlayerControls : MonoBehaviour
 
             Quaternion targetRotation = Quaternion.LookRotation(move, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+            playerAnim.SetBool("IsWalking", true);
         }
+        else
+        {
+            playerAnim.SetBool("IsWalking", false);
+        }
+
     }
 
     private void player_dash()

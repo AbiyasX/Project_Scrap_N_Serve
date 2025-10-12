@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: GrabMask
+  m_Mask: 00000000010000000100000000000000000000000100000001000000010000000100000000000000000000000000000000000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 1
+  - m_Path: Armature/Root
+    m_Weight: 0
+  - m_Path: Armature/Root/COG
+    m_Weight: 0
+  - m_Path: Armature/Root/COG/Hips
+    m_Weight: 0
+  - m_Path: Armature/Root/COG/Hips/thigh.L
+    m_Weight: 0
+  - m_Path: Armature/Root/COG/Hips/thigh.L/Leg.L
+    m_Weight: 0
+  - m_Path: Armature/Root/COG/Hips/thigh.L/Leg.L/Foot.L
+    m_Weight: 0
+  - m_Path: Armature/Root/COG/Hips/thigh.L/Leg.L/Foot.L/Foot.L.001
+    m_Weight: 0
+  - m_Path: Armature/Root/COG/Hips/thigh.R
+    m_Weight: 0
+  - m_Path: Armature/Root/COG/Hips/thigh.R/Leg.R
+    m_Weight: 0
+  - m_Path: Armature/Root/COG/Hips/thigh.R/Leg.R/Foot.R
+    m_Weight: 0
+  - m_Path: Armature/Root/COG/Hips/thigh.R/Leg.R/Foot.R/Foot.R.001
+    m_Weight: 0
+  - m_Path: Armature/Root/COG/Spine
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.L
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.L/Clavicle.L.001
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.L/Clavicle.L.001/Clavicle.L.002
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.L/Clavicle.L.001/Clavicle.L.002/Hand.L
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.L/Clavicle.L.001/Clavicle.L.002/Hand.L/Middle.L
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.L/Clavicle.L.001/Clavicle.L.002/Hand.L/Middle.L/Middle.L.001
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.L/Clavicle.L.001/Clavicle.L.002/Hand.L/Pinky.L
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.L/Clavicle.L.001/Clavicle.L.002/Hand.L/Pinky.L/Pinky.L.001
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.L/Clavicle.L.001/Clavicle.L.002/Hand.L/Point.L
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.L/Clavicle.L.001/Clavicle.L.002/Hand.L/Point.L/Point.L.001
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.L/Clavicle.L.001/Clavicle.L.002/Hand.L/Ring.L
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.L/Clavicle.L.001/Clavicle.L.002/Hand.L/Ring.L/Ring.L.001
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.L/Clavicle.L.001/Clavicle.L.002/Hand.L/Thumb.L
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.L/Clavicle.L.001/Clavicle.L.002/Hand.L/Thumb.L/Thumb.L.001
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.R
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.R/Clavicle.R.001
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.R/Clavicle.R.001/Clavicle.R.002
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.R/Clavicle.R.001/Clavicle.R.002/Hand.R
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.R/Clavicle.R.001/Clavicle.R.002/Hand.R/Middle.R
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.R/Clavicle.R.001/Clavicle.R.002/Hand.R/Middle.R/Middle.R.001
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.R/Clavicle.R.001/Clavicle.R.002/Hand.R/Pinky.R
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.R/Clavicle.R.001/Clavicle.R.002/Hand.R/Pinky.R/Pinky.R.001
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.R/Clavicle.R.001/Clavicle.R.002/Hand.R/Point.R
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.R/Clavicle.R.001/Clavicle.R.002/Hand.R/Point.R/Point.R.001
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.R/Clavicle.R.001/Clavicle.R.002/Hand.R/Ring.R
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.R/Clavicle.R.001/Clavicle.R.002/Hand.R/Ring.R/Ring.R.001
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.R/Clavicle.R.001/Clavicle.R.002/Hand.R/Thumb.R
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Clavicle.R/Clavicle.R.001/Clavicle.R.002/Hand.R/Thumb.R/Thumb.R.001
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Neck
+    m_Weight: 1
+  - m_Path: Armature/Root/COG/Spine/Neck/Head
+    m_Weight: 1
+  - m_Path: Armature/Root/IK_Leg_L
+    m_Weight: 0
+  - m_Path: Armature/Root/IK_Leg_R
+    m_Weight: 0
+  - m_Path: Willy
+    m_Weight: 1

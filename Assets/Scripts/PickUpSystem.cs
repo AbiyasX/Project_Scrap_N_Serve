@@ -13,12 +13,18 @@ public class PickUpSystem : MonoBehaviour
     [SerializeField] private float maxThrowForce;
     [SerializeField] private float maxChargeTime;
 
+    Animator grabAnim;
     private GameObject currentItem;
     private GameObject heldItem;
     private bool isHoldingItem = false;
 
     private float throwCharge = 0f;
     private bool isChargingThrow = false;
+
+    private void Awake()
+    {
+        grabAnim = GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -30,6 +36,15 @@ public class PickUpSystem : MonoBehaviour
         {
             throwCharge += Time.deltaTime;
             throwCharge = Mathf.Clamp(throwCharge, 0f, maxChargeTime);
+        }
+
+        if (grabAnim != null)
+        {
+            int grabLayerIndex = 1;
+            float targetWeight = isHoldingItem ? 1f : 0f; // if holding item > 1, else > 0
+            float currentWeight = grabAnim.GetLayerWeight(grabLayerIndex);
+            float newWeight = Mathf.Lerp(currentWeight, targetWeight, Time.deltaTime * 10f);
+            grabAnim.SetLayerWeight(grabLayerIndex, newWeight);
         }
     }
 
