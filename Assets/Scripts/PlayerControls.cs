@@ -1,6 +1,10 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+public interface Iinteract
+{
+    void Interact();
+}
 
 public class PlayerControls : MonoBehaviour
 {
@@ -17,9 +21,8 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] bool canDash = true;
     bool isDashing = false;
     [Header("Interaction")]
-    [SerializeField] float interactDistance = 3f;
     [SerializeField] private float rayHeight = 1.5f;
-    [SerializeField] private float yOffset = 0.5f;
+
 
     private PickUpSystem interactObj;
     Animator playerAnim;
@@ -68,32 +71,29 @@ public class PlayerControls : MonoBehaviour
 
     private void Interact_performed(InputAction.CallbackContext obj)
     {
-        Vector3 origin = transform.position + Vector3.up * rayHeight;
-        Vector3 direction = (transform.forward + Vector3.down * yOffset).normalized;
+        float interactRadius = 1.5f;
+        Vector3 center = transform.position + Vector3.up * rayHeight;
 
-        if (Physics.Raycast(origin, direction, out RaycastHit hit, interactDistance, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Collide))
+        Collider[] hits = Physics.OverlapSphere(center, interactRadius, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Collide);
+
+        foreach (Collider hit in hits)
         {
-            Iinteract interactable = hit.collider.GetComponent<Iinteract>();
+            Iinteract interactable = hit.GetComponent<Iinteract>();
             if (interactable != null)
             {
                 interactable.Interact();
+                break;
             }
         }
     }
 
-    // --- Draw Gizmo to visualize ray ---
     private void OnDrawGizmosSelected()
     {
-        Vector3 origin = transform.position + Vector3.up * rayHeight;
-        Vector3 direction = (transform.forward + Vector3.down * yOffset).normalized;
+        Vector3 center = transform.position + Vector3.up * rayHeight;
+        float interactRadius = 1.5f;
 
-        // Draw the ray line
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(origin, origin + direction * interactDistance);
-
-        // Draw a sphere at the end of the ray to visualize hit area
         Gizmos.color = new Color(0, 1, 0, 0.3f);
-        Gizmos.DrawWireSphere(origin + direction * interactDistance, 0.2f);
+        Gizmos.DrawWireSphere(center, interactRadius);
     }
 
     private void Dash_performed(InputAction.CallbackContext obj)

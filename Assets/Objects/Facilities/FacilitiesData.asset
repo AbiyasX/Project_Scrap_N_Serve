@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: FacilitiesData
   m_EditorClassIdentifier: Assembly-CSharp::FacilitiesData
   facilityName: Metal Factory Dummy
-  facilityCost: 1
-  facilityRepairCost: 1
-  facilityUpgrade: 1
-  facilityLevel: 1
+  facilityCost: 100
+  facilityRepairCost: 20
+  facilityUpgrade: 20
+  facilityLevel: 3
   facilityCookTime: 5
-  facilityModel: {fileID: 919132149155446097, guid: 33817a8b9fda0ab489f57888c6ac1e8e, type: 3}
+  facilityModel: {fileID: 1273327338872073154, guid: 604b78a779cfdec45a4e452102d97b7a, type: 3}
   facilityProductionModel: {fileID: 919132149155446097, guid: b8ec92fd50c09ec47b6767214cb4dae9, type: 3}
+  isPurchased: 1

@@ -4,13 +4,14 @@ using UnityEngine.UIElements;
 [CreateAssetMenu(fileName = "FacilitiesData", menuName = "Facilities/FacilitiesData")]
 public class FacilitiesData : ScriptableObject
 {
-    [SerializeField] string facilityName;
-    [SerializeField] float facilityCost;
-    [SerializeField] float facilityRepairCost;
-    [SerializeField] float facilityUpgrade;
-    [Range(1f, 3f)]
-    [SerializeField] int facilityLevel;
-    [SerializeField] float facilityCookTime;
-    [SerializeField] GameObject facilityModel;
+    [SerializeField] public string facilityName;
+    [SerializeField] public float facilityCost;
+    [SerializeField] public float facilityRepairCost;
+    [SerializeField] public float facilityUpgrade;
+    [Range(0f, 3f)]
+    [SerializeField] public int facilityLevel;
+    [SerializeField] public float facilityCookTime;
+    [SerializeField] public GameObject facilityModel;
     [SerializeField] GameObject facilityProductionModel;
+    [SerializeField] public bool isPurchased;
 }

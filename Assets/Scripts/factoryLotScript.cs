@@ -1,33 +1,169 @@
+using TMPro;
 using UnityEngine;
 
 public class factoryLotScript : MonoBehaviour, Iinteract
 {
-    [SerializeField] private GameObject textUI;
+    [SerializeField] private float facilityHealth = 100f;
+    [SerializeField] private float facilityMaxHealth = 100f;
+    [SerializeField] private GameObject buyTextUI;
+
+    [Header("Option References")]
+    [SerializeField] private GameObject optionTextUI;
+
+    [SerializeField] public TextMeshProUGUI healthtext;
+    [SerializeField] public TextMeshProUGUI upgradeText;
+    [SerializeField] public TextMeshProUGUI repairText;
+    [SerializeField] bool isFullyUpgrade = false;
     private bool playerNearby = false;
+    private Renderer rend;
+    private bool purchased = false;
+    [SerializeField] private FacilityShopManager shopManager;
+
+    private FacilitiesData builtFacility;
+    private float currentUpgradeCost;
+
+    private void Awake()
+    {
+        rend = GetComponent<Renderer>();
+        if (buyTextUI != null)
+            buyTextUI.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (purchased)
+        {
+            UpdateHealthUI();
+            buyTextUI.SetActive(false);
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             playerNearby = true;
-            textUI.SetActive(true);
-            GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+            rend.material.EnableKeyword("_EMISSION");
+            if (!purchased)
+            {
+                buyTextUI.SetActive(true);
+            }
         }
     }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             playerNearby = false;
-            textUI.SetActive(false);
-            GetComponent<Renderer>().material.DisableKeyword("_EMISSION");
+            buyTextUI.SetActive(false);
+            optionTextUI.SetActive(false);
+            rend.material.DisableKeyword("_EMISSION");
         }
     }
+
     public void Interact()
     {
         if (playerNearby)
         {
-            Debug.Log("OpenShop");
+            if (!purchased && shopManager != null)
+            {
+                shopManager.OpenShop(this);
+                Debug.Log("Opened Facility Shop for this lot");
+            }
+            else if (purchased)
+            {
+                optionTextUI.SetActive(true);
+                FacilityFunction();
+            }
         }
+    }
+
+    public void isPurchaseLot(bool isActive, FacilitiesData facility = null)
+    {
+        purchased = isActive;
+       
+        if (purchased && facility != null)
+        {
+            builtFacility = facility;
+            currentUpgradeCost = builtFacility.facilityUpgrade;
+            FacilityFunction();
+        }
+    }
+
+    private void FacilityFunction()
+    {
+        repairText.text = $"Repair: {builtFacility.facilityRepairCost.ToString()}";
+        UpdateHealthUI();
+    }
+
+    public void Repair()
+    {
+        float repairCost = builtFacility.facilityRepairCost;
+
+        if (facilityHealth >= facilityMaxHealth)
+        {
+            Debug.Log("Facility is already fully repaired!");
+        }
+        else if (CurrencyManager.instance.HasEnough(repairCost))
+        {
+            CurrencyManager.instance.SpendMoney(repairCost);
+            facilityHealth = facilityMaxHealth;
+            UpdateHealthUI();
+            Debug.Log("Facility repaired successfully!");
+        }
+        else
+        {
+            Debug.Log("Not enough currency to repair the facility!");
+        }
+    }
+
+    public void Upgrade()
+    {
+        if (builtFacility.facilityLevel < 3)
+        {
+            if (CurrencyManager.instance.HasEnough(currentUpgradeCost))
+            {
+                CurrencyManager.instance.SpendMoney(currentUpgradeCost);
+
+                builtFacility.facilityLevel += 1;
+                currentUpgradeCost *= 1.80f;
+
+                if (builtFacility.facilityLevel >= 3)
+                {
+                    isFullyUpgrade = true;
+                    Debug.Log("Facility is fully upgraded!");
+                }
+
+                Debug.Log($"Upgraded to level {builtFacility.facilityLevel}! Next cost: {currentUpgradeCost}");
+            }
+            else
+            {
+                Debug.Log("Not enough currency to upgrade!");
+            }
+        }
+        else
+        {
+            isFullyUpgrade = true;
+            Debug.Log("Facility is fully upgraded!");
+        }
+    }
+
+    public void addHealth(float amount)
+    {
+        facilityHealth = Mathf.Min(facilityHealth + amount, facilityMaxHealth);
+        UpdateHealthUI();
+    }
+
+    public void minusHealth(float amount)
+    {
+        facilityHealth = Mathf.Max(facilityHealth - amount, 0);
+        UpdateHealthUI();
+    }
+
+    private void UpdateHealthUI()
+    {
+        upgradeText.text = isFullyUpgrade?"Max Upgraded" : $"Upgrade: {Mathf.RoundToInt(currentUpgradeCost)}";
+        healthtext.text = $"Durability: {Mathf.RoundToInt(facilityHealth)}%";
     }
 }
