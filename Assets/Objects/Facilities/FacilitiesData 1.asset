@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece3ca2215f2f2b47af2d20b6d5370bf, type: 3}
   m_Name: FacilitiesData 1
   m_EditorClassIdentifier: Assembly-CSharp::FacilitiesData
-  facilityName: Iron Factory Dummy
+  facilityIcon: {fileID: 0}
+  facilityName: RED FACTORY
   facilityCost: 50
   facilityRepairCost: 32
   facilityUpgrade: 200
-  facilityLevel: 3
+  facilityLevel: 2
   facilityCookTime: 5
-  facilityModel: {fileID: 1273327338872073154, guid: 604b78a779cfdec45a4e452102d97b7a, type: 3}
-  facilityProductionModel: {fileID: 919132149155446097, guid: b8ec92fd50c09ec47b6767214cb4dae9, type: 3}
+  facilityModel: {fileID: 919132149155446097, guid: 93f30f1abe29d8b4a81aac63c2b09add, type: 3}
+  productionMaterial: {fileID: 11400000, guid: b9c516a79ae383a43ad2666ce415db6d, type: 2}
   isPurchased: 1

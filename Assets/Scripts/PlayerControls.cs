@@ -25,12 +25,11 @@ public class PlayerControls : MonoBehaviour
 
 
     private PickUpSystem interactObj;
-    Animator playerAnim;
+    [SerializeField] Animator playerAnim;
     private void Awake()
     {
         inputActions = new InputSystem_Actions();
         interactObj = GetComponent<PickUpSystem>();
-        playerAnim = GetComponent<Animator>();
     }
 
     #region InputSystem !!Do Not Edit!!

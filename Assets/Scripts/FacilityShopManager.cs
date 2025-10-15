@@ -11,7 +11,7 @@ public class FacilityShopManager : MonoBehaviour
     public GameObject shopUI;
     [Header("Currency")]
     public CurrencyManager currencyManager;
-
+    public OrderMaterialSystem orderMenuManager;
     private factoryLotScript currentLot;
 
     public void OpenShop(factoryLotScript lot)
@@ -62,15 +62,14 @@ public class FacilityShopManager : MonoBehaviour
        
         if (currencyManager.HasEnough(facility.facilityCost))
         {
+            orderMenuManager.AddMaterialToMenu(facility.productionMaterial);
             currentLot.isPurchaseLot(true, facility);
             currencyManager.SpendMoney(facility.facilityCost);
             facility.isPurchased = true;
-            currentLot.isPurchaseLot(true);
             button.interactable = false;
             costText.text = "Purchased";
             shopUI.SetActive(false);
-           
-            Vector3 spawnPos = currentLot.transform.position + Vector3.forward * 2;
+            Vector3 spawnPos = currentLot.transform.position + new Vector3(0, -1f, 0);
             GameObject factory = Instantiate(facility.facilityModel, spawnPos, Quaternion.identity);
             factory.transform.SetParent(currentLot.transform);
             
