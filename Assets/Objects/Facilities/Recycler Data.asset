@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ece3ca2215f2f2b47af2d20b6d5370bf, type: 3}
-  m_Name: Smelter Data
+  m_Name: Recycler Data
   m_EditorClassIdentifier: Assembly-CSharp::FacilitiesData
-  facilityIcon: {fileID: 503319246, guid: c56c836780d88304db89f7e2661d45c6, type: 3}
-  facilityName: Smelter
-  facilityCost: 350
+  facilityIcon: {fileID: 432395499, guid: 5a5df1f2feee3e640a8f0544ed92ec1a, type: 3}
+  facilityName: Recycler
+  facilityCost: 250
   facilityRepairCost: 50
-  facilityUpgrade: 525
+  facilityUpgrade: 375
   facilityLevel: 0
-  facilityModel: {fileID: 919132149155446097, guid: cc44e2d7592b6544f8a2483ba5eb64c9, type: 3}
+  facilityModel: {fileID: 919132149155446097, guid: c9c3a02f1cf356547bc223ac6be76f0e, type: 3}
   productionMaterial: {fileID: 11400000, guid: b9c516a79ae383a43ad2666ce415db6d, type: 2}
   isPurchased: 0

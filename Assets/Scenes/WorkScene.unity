@@ -1258,7 +1258,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60.000004
+  field of view: 65
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1284,8 +1284,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: -7.69015, y: 10.25, z: -11.58764}
+  m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
+  m_LocalPosition: {x: -1.5, y: 16, z: 7.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1518,7 +1518,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   facilities:
+  - {fileID: 11400000, guid: c09eb16a446312541ba265b26a85ab5c, type: 2}
+  - {fileID: 11400000, guid: 7536e37304da1df41b80c74fb61a3fbc, type: 2}
+  - {fileID: 11400000, guid: dfda12a7f30b55d45b5b1ca7ddd410a1, type: 2}
+  - {fileID: 11400000, guid: b0d9a12ec3156e84891c3d611d282acd, type: 2}
   - {fileID: 11400000, guid: e723b994bfad0864780059b4a263c29f, type: 2}
+  - {fileID: 11400000, guid: 63b9908cb308db84dac047ff43712797, type: 2}
   shopUIParent: {fileID: 1689425474}
   shopButtonPrefab: {fileID: 6569530815984528040, guid: d66cb16c62e67344489562dcce7a469a, type: 3}
   shopUI: {fileID: 379353240}
@@ -3297,7 +3302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
   Priority:
     Enabled: 1
-    m_Value: 0
+    m_Value: 1
   OutputChannel: 1
   StandbyUpdate: 2
   m_StreamingVersion: 20241001
