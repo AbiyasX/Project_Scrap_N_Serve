@@ -21,6 +21,7 @@ public class factoryLotScript : MonoBehaviour, Iinteract
 
     private FacilitiesData builtFacility;
     private float currentUpgradeCost;
+    int currentLevel = 1;
 
     private void Awake()
     {
@@ -85,6 +86,7 @@ public class factoryLotScript : MonoBehaviour, Iinteract
        
         if (purchased && facility != null)
         {
+            currentLevel = 1;
             builtFacility = facility;
             currentUpgradeCost = builtFacility.facilityUpgrade;
             FacilityFunction();
@@ -93,7 +95,7 @@ public class factoryLotScript : MonoBehaviour, Iinteract
 
     private void FacilityFunction()
     {
-        repairText.text = $"Repair: {builtFacility.facilityRepairCost.ToString()}";
+        repairText.text = $"Repair: {builtFacility.facilityRepairCost}";
         UpdateHealthUI();
     }
 
@@ -120,22 +122,23 @@ public class factoryLotScript : MonoBehaviour, Iinteract
 
     public void Upgrade()
     {
-        if (builtFacility.facilityLevel < 3)
+        if (currentLevel < 3)
         {
             if (CurrencyManager.instance.HasEnough(currentUpgradeCost))
             {
                 CurrencyManager.instance.SpendMoney(currentUpgradeCost);
 
-                builtFacility.facilityLevel += 1;
-                currentUpgradeCost *= 1.80f;
+                currentLevel++;
+                currentUpgradeCost *= 1.8f;
 
-                if (builtFacility.facilityLevel >= 3)
+                if (currentLevel >= 3)
                 {
                     isFullyUpgrade = true;
                     Debug.Log("Facility is fully upgraded!");
                 }
 
-                Debug.Log($"Upgraded to level {builtFacility.facilityLevel}! Next cost: {currentUpgradeCost}");
+                Debug.Log($"Upgraded to level {currentLevel}! Next cost: {currentUpgradeCost}");
+                UpdateHealthUI();
             }
             else
             {
@@ -145,7 +148,7 @@ public class factoryLotScript : MonoBehaviour, Iinteract
         else
         {
             isFullyUpgrade = true;
-            Debug.Log("Facility is fully upgraded!");
+            Debug.Log("Facility is already fully upgraded!");
         }
     }
 
@@ -154,7 +157,10 @@ public class factoryLotScript : MonoBehaviour, Iinteract
         facilityHealth = Mathf.Min(facilityHealth + amount, facilityMaxHealth);
         UpdateHealthUI();
     }
-
+    public int GetCurrentLevel()
+    {
+        return currentLevel;
+    }
     public void minusHealth(float amount)
     {
         facilityHealth = Mathf.Max(facilityHealth - amount, 0);

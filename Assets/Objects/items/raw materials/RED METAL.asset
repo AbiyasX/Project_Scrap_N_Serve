@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: RED METAL
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   materialName: RED Iron
-  materialIcon: {fileID: 0}
+  materialIcon: {fileID: 996939769, guid: 06a39dba53eac604aa0069ae5a3caed4, type: 3}
   materialPrefab: {fileID: 5367685767104775380, guid: 88402ad3d5bfdca46a38c0739bce0acf, type: 3}

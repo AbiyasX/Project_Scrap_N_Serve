@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BLUE METAL
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   materialName: BLUE Iron
-  materialIcon: {fileID: 0}
+  materialIcon: {fileID: -916124393, guid: 4de6f3f7c39548b49ab235b2a77e39fa, type: 3}
   materialPrefab: {fileID: 2112023731070752232, guid: b23d99a14256588469db1744b8c857b7, type: 3}

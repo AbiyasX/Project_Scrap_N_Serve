@@ -62,7 +62,7 @@ public class FacilityShopManager : MonoBehaviour
        
         if (currencyManager.HasEnough(facility.facilityCost))
         {
-            orderMenuManager.AddMaterialToMenu(facility.productionMaterial);
+            orderMenuManager.AddMaterialToMenu(facility.productionMaterial, currentLot.GetCurrentLevel(), currentLot);
             currentLot.isPurchaseLot(true, facility);
             currencyManager.SpendMoney(facility.facilityCost);
             facility.isPurchased = true;
