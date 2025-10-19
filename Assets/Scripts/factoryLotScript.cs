@@ -116,6 +116,7 @@ public class factoryLotScript : MonoBehaviour, Iinteract
         }
         else
         {
+            //Add UI text <<
             Debug.Log("Not enough currency to repair the facility!");
         }
     }
@@ -134,14 +135,13 @@ public class factoryLotScript : MonoBehaviour, Iinteract
                 if (currentLevel >= 3)
                 {
                     isFullyUpgrade = true;
-                    Debug.Log("Facility is fully upgraded!");
+                    
                 }
-
-                Debug.Log($"Upgraded to level {currentLevel}! Next cost: {currentUpgradeCost}");
                 UpdateHealthUI();
             }
             else
             {
+                // Add UI Text Here <<
                 Debug.Log("Not enough currency to upgrade!");
             }
         }
