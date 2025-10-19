@@ -3,7 +3,7 @@ using TMPro;
 
 public class CurrencyManager : MonoBehaviour
 {
-    [SerializeField] private float currentCurrency;
+    [SerializeField] private float Cog_currentCurrency;
     [SerializeField] private TextMeshProUGUI cogsUIText;
 
     public static CurrencyManager instance;
@@ -17,20 +17,20 @@ public class CurrencyManager : MonoBehaviour
     }
     public bool HasEnough(float amount)
     {
-        return currentCurrency >= amount;
+        return Cog_currentCurrency >= amount;
     }
 
     public void AddMoney(float amount)
     {
-        currentCurrency += amount;
+        Cog_currentCurrency += amount;
         UpdateCurrencyUI();
     }
 
     public void SpendMoney(float amount)
     {
-        if (currentCurrency >= amount)
+        if (Cog_currentCurrency >= amount)
         {
-            currentCurrency -= amount;
+            Cog_currentCurrency -= amount;
             UpdateCurrencyUI();
         }
         else
@@ -41,7 +41,7 @@ public class CurrencyManager : MonoBehaviour
 
     public float GetCurrentCurrency()
     {
-        return currentCurrency;
+        return Cog_currentCurrency;
     }
     public void AddMoneyButton(float amount)
     {
@@ -50,6 +50,6 @@ public class CurrencyManager : MonoBehaviour
 
     private void UpdateCurrencyUI()
     {
-        cogsUIText.text = "Cogs: " + currentCurrency.ToString("N0");
+        cogsUIText.text = "Cogs: " + Cog_currentCurrency.ToString("N0");
     }
 }

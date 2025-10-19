@@ -20,4 +20,4 @@ MonoBehaviour:
   facilityLevel: 0
   facilityModel: {fileID: 919132149155446097, guid: 396c4169ca073754e883d2d5f326a1a8, type: 3}
   productionMaterial: {fileID: 11400000, guid: b9c516a79ae383a43ad2666ce415db6d, type: 2}
-  isPurchased: 0
+  isPurchased: 1

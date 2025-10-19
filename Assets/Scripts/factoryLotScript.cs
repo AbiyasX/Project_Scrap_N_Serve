@@ -11,19 +11,20 @@ public class factoryLotScript : MonoBehaviour, Iinteract
 
     [Header("Option References")]
     [SerializeField] private GameObject optionTextUI;
+
     [SerializeField] public TextMeshProUGUI healthtext;
     [SerializeField] public TextMeshProUGUI upgradeText;
     [SerializeField] public TextMeshProUGUI repairText;
-    [SerializeField] bool isFullyUpgrade = false;
+    [SerializeField] private bool isFullyUpgrade = false;
     private bool playerNearby = false;
     [SerializeField] private Renderer[] rend;
     private bool purchased = false;
     [SerializeField] private FacilityShopManager shopManager;
-
+    [SerializeField] public GameObject underConstructionModel;
     private FacilitiesData builtFacility;
     private float currentUpgradeCost;
     private float currentRepairCost;
-    int currentLevel = 1;
+    private int currentLevel = 1;
 
     private void Awake()
     {
@@ -47,13 +48,12 @@ public class factoryLotScript : MonoBehaviour, Iinteract
         {
             playerNearby = true;
 
-            foreach(var obj  in rend)
+            foreach (var obj in rend)
             {
-                
                 obj.material.EnableKeyword("_EMISSION");
-                obj.material.SetColor("_EmissionColor", Color.white * 0.2f);
+                obj.material.SetColor("_EmissionColor", Color.white * 0.05f);
             }
-            
+
             if (!purchased)
             {
                 buyTextUI.SetActive(true);
@@ -68,6 +68,7 @@ public class factoryLotScript : MonoBehaviour, Iinteract
             playerNearby = false;
             buyTextUI.SetActive(false);
             optionTextUI.SetActive(false);
+            shopManager.shopUI.SetActive(false);
             foreach (var obj in rend)
             {
                 obj.material.DisableKeyword("_EMISSION");
@@ -95,21 +96,21 @@ public class factoryLotScript : MonoBehaviour, Iinteract
     public void isPurchaseLot(bool isActive, FacilitiesData facility = null)
     {
         purchased = isActive;
-       
+
         if (purchased && facility != null)
         {
-            GameObject.Find("UnderGround_ConstructionSite").SetActive(!purchased);
+            underConstructionModel.SetActive(!purchased);
             currentLevel = 1;
             builtFacility = facility;
             currentUpgradeCost = builtFacility.facilityUpgrade;
             currentRepairCost = builtFacility.facilityRepairCost;
             FacilityFunction();
-        }    
+        }
     }
 
     private void FacilityFunction()
     {
-        repairText.text = $"Repair: {builtFacility.facilityRepairCost}";
+        ;
         UpdateHealthUI();
     }
 
@@ -149,7 +150,6 @@ public class factoryLotScript : MonoBehaviour, Iinteract
                 if (currentLevel >= 3)
                 {
                     isFullyUpgrade = true;
-                    
                 }
                 UpdateHealthUI();
             }
@@ -171,10 +171,12 @@ public class factoryLotScript : MonoBehaviour, Iinteract
         facilityHealth = Mathf.Min(facilityHealth + amount, facilityMaxHealth);
         UpdateHealthUI();
     }
+
     public int GetCurrentLevel()
     {
         return currentLevel;
     }
+
     public void minusHealth(float amount)
     {
         facilityHealth = Mathf.Max(facilityHealth - amount, 0);
@@ -183,7 +185,8 @@ public class factoryLotScript : MonoBehaviour, Iinteract
 
     private void UpdateHealthUI()
     {
-        upgradeText.text = isFullyUpgrade?"Max Upgraded" : $"Upgrade: {Mathf.RoundToInt(currentUpgradeCost)}";
+        repairText.text = $"Repair: {currentRepairCost}";
+        upgradeText.text = isFullyUpgrade ? "Max Upgraded" : $"Upgrade: {Mathf.RoundToInt(currentUpgradeCost)}";
         healthtext.text = $"Durability: {Mathf.RoundToInt(facilityHealth)}%";
     }
 }

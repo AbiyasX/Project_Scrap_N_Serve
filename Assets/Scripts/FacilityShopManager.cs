@@ -14,12 +14,26 @@ public class FacilityShopManager : MonoBehaviour
     public OrderMaterialSystem orderMenuManager;
     private factoryLotScript currentLot;
 
+    private void Awake()
+    {
+        foreach(var resetPurchase in facilities)
+        {
+            resetPurchase.isPurchased = false;
+        }
+    }
+
     public void OpenShop(factoryLotScript lot)
     {
         currentLot = lot;
 
         shopUI.SetActive(true);
         PopulateShop();
+    }
+
+    public void CloseShop()
+    {
+        shopUI.SetActive(false);
+        currentLot = null;
     }
 
     private void PopulateShop()
