@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e30567506c74c843843a3abd5c52a36, type: 3}
   m_Name: LowTier
   m_EditorClassIdentifier: Assembly-CSharp::CustomerData
-  customerTier: 
-  minPayment: 0
-  maxPayment: 0
-  possibleOrders: []
+  customerTier: Low
+  minPayment: 5
+  maxPayment: 10
+  reputationRequiredMin: 0
+  reputationRequiredMax: 40
+  possibleOrders:
+  - {fileID: 11400000, guid: 3abe9d3948f52c94f9874af91eed6fb0, type: 2}

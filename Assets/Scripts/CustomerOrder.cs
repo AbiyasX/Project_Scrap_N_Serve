@@ -4,7 +4,7 @@ using UnityEngine;
 public class CustomerOrder
 {
     public string orderID;
-    public ItemData requestedItem;
+    public ItemData orderedItem;
     public int quantity;
     public int payment;
     public bool isCompleted;
@@ -14,7 +14,7 @@ public class CustomerOrder
     public CustomerOrder(string id, ItemData item, int qty, int pay, float time)
     {
         orderID = id;
-        requestedItem = item;
+        orderedItem = item;
         quantity = qty;
         payment = pay;
         timeRemaining = time;
