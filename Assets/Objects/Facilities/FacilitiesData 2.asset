@@ -10,19 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ece3ca2215f2f2b47af2d20b6d5370bf, type: 3}
-  m_Name: FacilitiesData
+  m_Name: FacilitiesData 2
   m_EditorClassIdentifier: Assembly-CSharp::FacilitiesData
   facilityIcon: {fileID: 0}
-  facilityName: BLUE FACTORY
-  facilityCost: 100
-  facilityRepairCost: 20
-  facilityUpgrade: 20
-<<<<<<< Updated upstream
+  facilityName: RED FACTORY
+  facilityCost: 50
+  facilityRepairCost: 32
+  facilityUpgrade: 200
   facilityLevel: 0
-=======
-  facilityLevel: 2
   facilityCookTime: 5
->>>>>>> Stashed changes
-  facilityModel: {fileID: 919132149155446097, guid: 33817a8b9fda0ab489f57888c6ac1e8e, type: 3}
-  productionMaterial: {fileID: 11400000, guid: 2c97464a77b092e4487fe5359a4acbe5, type: 2}
-  isPurchased: 1
+  facilityModel: {fileID: 919132149155446097, guid: 93f30f1abe29d8b4a81aac63c2b09add, type: 3}
+  productionMaterial: {fileID: 11400000, guid: b9c516a79ae383a43ad2666ce415db6d, type: 2}
+  isPurchased: 0
