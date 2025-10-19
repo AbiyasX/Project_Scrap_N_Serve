@@ -34,7 +34,8 @@ public class FacilityShopManager : MonoBehaviour
             GameObject buttonObj = Instantiate(shopButtonPrefab, shopUIParent);
 
             TextMeshProUGUI[] texts = buttonObj.GetComponentsInChildren<TextMeshProUGUI>();
-
+            Image facilityIcon = buttonObj.transform.Find("FacilityIcon").GetComponent<Image>();
+            facilityIcon.sprite = facility.facilityIcon;
             if (texts.Length >= 2)
             {
                 texts[0].text = facility.facilityName;
@@ -44,7 +45,6 @@ public class FacilityShopManager : MonoBehaviour
             Button button = buttonObj.GetComponent<Button>();
             
             button.interactable = !facility.isPurchased;
-
             Button localButton = button;
             TextMeshProUGUI costText = texts.Length >= 2 ? texts[1] : null;
             FacilitiesData localFacility = facility;
@@ -68,10 +68,9 @@ public class FacilityShopManager : MonoBehaviour
             facility.isPurchased = true;
             button.interactable = false;
             costText.text = "Purchased";
-            shopUI.SetActive(false);
-            Vector3 spawnPos = currentLot.transform.position + new Vector3(0, -1f, 0);
-            GameObject factory = Instantiate(facility.facilityModel, spawnPos, Quaternion.identity);
-            factory.transform.SetParent(currentLot.transform);
+            shopUI.SetActive(false); 
+            GameObject factory = Instantiate(facility.facilityModel, currentLot.facilitySlot.position, currentLot.facilitySlot.rotation);
+            factory.transform.SetParent(currentLot.facilitySlot);
             
         }
         else
