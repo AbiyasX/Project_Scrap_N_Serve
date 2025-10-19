@@ -17,7 +17,7 @@ MonoBehaviour:
   facilityCost: 50
   facilityRepairCost: 32
   facilityUpgrade: 200
-  facilityLevel: 2
+  facilityLevel: 0
   facilityCookTime: 5
   facilityModel: {fileID: 919132149155446097, guid: 93f30f1abe29d8b4a81aac63c2b09add, type: 3}
   productionMaterial: {fileID: 11400000, guid: b9c516a79ae383a43ad2666ce415db6d, type: 2}
