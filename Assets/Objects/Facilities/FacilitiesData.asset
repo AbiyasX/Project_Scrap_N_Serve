@@ -18,8 +18,11 @@ MonoBehaviour:
   facilityRepairCost: 20
   facilityUpgrade: 20
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   facilityLevel: 0
 =======
+=======
+>>>>>>> Stashed changes
   facilityLevel: 2
   facilityCookTime: 5
 >>>>>>> Stashed changes
