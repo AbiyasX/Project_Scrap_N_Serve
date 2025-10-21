@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8f5d7d226b4694ab4d8780229315ec, type: 3}
+  m_Name: Herb
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  materialName: Herb
+  materialIcon: {fileID: -1255823078, guid: b06a435223080814ea53892ab303a130, type: 3}
+  materialPrefab: {fileID: 3710735416793146817, guid: c34fd408a3d125a439af3a79d48c3875, type: 3}

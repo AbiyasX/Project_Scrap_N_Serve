@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Facility
   - Ground
+  - Processed
   layers:
   - Default
   - TransparentFX

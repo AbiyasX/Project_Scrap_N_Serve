@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ece3ca2215f2f2b47af2d20b6d5370bf, type: 3}
+  m_Name: Smelter Data
+  m_EditorClassIdentifier: Assembly-CSharp::FacilitiesData
+  facilityIcon: {fileID: 503319246, guid: c56c836780d88304db89f7e2661d45c6, type: 3}
+  facilityName: Smelter
+  facilityCost: 350
+  facilityRepairCost: 50
+  facilityUpgrade: 525
+  facilityLevel: 0
+  facilityModel: {fileID: 8390803791580859898, guid: 1aa049f9eabf12842943cbcaf7d735db, type: 3}
+  productionMaterial: {fileID: 11400000, guid: b9c516a79ae383a43ad2666ce415db6d, type: 2}
+  isPurchased: 0
