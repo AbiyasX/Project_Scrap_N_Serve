@@ -37,7 +37,7 @@ public class WorkstationProcessor : MonoBehaviour
         foreach (var recipe in workstationData.recipes)
         {
             if (inputItem.name.Replace("(Clone)", "").Trim()
-                .Equals(recipe.outputPrefab.name, System.StringComparison.OrdinalIgnoreCase))
+                .Equals(recipe.outputPrefab.name, StringComparison.OrdinalIgnoreCase))
             {
                 Debug.Log($"[{workstationData.workstationName}] Ignoring output item: {inputItem.name}");
                 return;
@@ -47,7 +47,7 @@ public class WorkstationProcessor : MonoBehaviour
         foreach (var recipe in workstationData.recipes)
         {
             if (inputItem.name.Replace("(Clone)", "").Trim()
-                .Equals(recipe.inputPrefab.name, System.StringComparison.OrdinalIgnoreCase))
+                .Equals(recipe.inputPrefab.name, StringComparison.OrdinalIgnoreCase))
             {
                 StartCoroutine(ProcessItem(recipe, inputItem));
                 return;
