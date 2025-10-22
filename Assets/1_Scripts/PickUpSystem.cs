@@ -78,7 +78,7 @@ public class PickUpSystem : MonoBehaviour
     public void PickUpItem()
     {
         if (currentItem == null) return;
-
+        AssemblySystem.Instance.RemoveItemManually(currentItem);
         Rigidbody rb = currentItem.GetComponent<Rigidbody>();
         if (rb)
         {
@@ -92,7 +92,7 @@ public class PickUpSystem : MonoBehaviour
         currentItem.transform.SetParent(itemHolder);
         currentItem.transform.localPosition = Vector3.zero;
         currentItem.transform.localRotation = Quaternion.identity;
-
+        
         heldItem = currentItem;
         currentItem = null;
         isHoldingItem = true;
