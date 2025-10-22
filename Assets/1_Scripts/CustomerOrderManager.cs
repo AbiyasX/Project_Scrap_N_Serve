@@ -10,7 +10,7 @@ public class CustomerOrderManager : MonoBehaviour
     public List<CustomerData> customers;
     public Transform orderUIParent;
     public GameObject orderUIPrefab;
-    public float baseOrderTime = 5f;
+    public float baseOrderTime = 10f;
     public float orderInterval = 5f;
     public int completedOrders = 0;
 
@@ -103,14 +103,21 @@ public class CustomerOrderManager : MonoBehaviour
         GameObject ui = Instantiate(orderUIPrefab, orderUIParent);
         ui.transform.localScale = Vector3.one;
 
-        Image icon = ui.transform.Find("Icon").GetComponentInChildren<Image>();
-        Image fill = ui.transform.Find("Icon/IconFill").GetComponent<Image>();
+        Transform iconParent = ui.transform.Find("Icon");
+        Image icon = iconParent.GetComponent<Image>();
+        Image fill = iconParent.Find("IconFill").GetComponent<Image>();
+
+        fill.sprite = order.orderedItem.materialIcon;
+        fill.type = Image.Type.Filled;
+        fill.fillMethod = Image.FillMethod.Vertical;
+        fill.fillOrigin = (int)Image.OriginVertical.Bottom;
+        fill.fillAmount = 0f;
+
         TMP_Text qtyText = ui.GetComponentInChildren<TMP_Text>();
-       
         icon.sprite = order.orderedItem.materialIcon;
         qtyText.text = $"{order.quantity}x {order.orderedItem.materialName}";
 
-        fill.fillAmount = 0f;
+        order.timeRemaining = order.totalTime;
 
         orderUIObjects.Add(order, ui);
 
@@ -129,7 +136,17 @@ public class CustomerOrderManager : MonoBehaviour
             if (orderUIObjects.ContainsKey(order))
             {
                 var ui = orderUIObjects[order];
-               
+                Image fill = ui.transform.Find("Icon/IconFill").GetComponent<Image>();
+
+                if (order.totalTime > 0f)
+                {
+                    float targetFill = Mathf.Clamp01((order.totalTime - order.timeRemaining) / order.totalTime);
+                    fill.fillAmount = Mathf.Lerp(fill.fillAmount, targetFill, Time.deltaTime * 10f);
+                }
+                else
+                {
+                    fill.fillAmount = 1f;
+                }
             }
 
             if (order.timeRemaining <= 0)

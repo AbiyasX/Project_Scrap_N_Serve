@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   materialName: Tire
   materialIcon: {fileID: 1401009992, guid: 040fd3bd5e3877849925f45a9ee5864c, type: 3}
-  materialPrefab: {fileID: 2349345147681557910, guid: 6eaf2f8104feab14da5c251ec194984b, type: 3}
+  materialPrefab: {fileID: 919132149155446097, guid: f15edb18555e03e44b4ef59dd3c43c5a, type: 3}
