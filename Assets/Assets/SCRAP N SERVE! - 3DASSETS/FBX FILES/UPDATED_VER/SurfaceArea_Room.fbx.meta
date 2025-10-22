@@ -3,7 +3,122 @@ guid: 51f5216253a87404182793005dddd742
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Black
+    second: {fileID: 2100000, guid: 62497699b02b7ef4d9e4db592ef42c7c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bullet.001
+    second: {fileID: 2100000, guid: 5184567849021844aabee2b5e5870fa8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ConstFloor
+    second: {fileID: 2100000, guid: 61289887d93129b49a1027c4bc96e2b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Construction
+    second: {fileID: 2100000, guid: ada1597684c10b9479ec07278b4ac5bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Construction_Brown
+    second: {fileID: 2100000, guid: fcd0a69da183fb6418d299fd06d69286, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Construction_Orange
+    second: {fileID: 2100000, guid: dbf1f51cc0f20b84ab248bd5b3a7796a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Construction_Yellow
+    second: {fileID: 2100000, guid: 500136330abdeed438aea268f351ea29, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Copper_Brown
+    second: {fileID: 2100000, guid: 53e19f4009c709f46bfdc7cf1048b0a3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Copper_Main
+    second: {fileID: 2100000, guid: ef11a7b2c8b0aa547ae384fa21df65d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Copper_Yellow
+    second: {fileID: 2100000, guid: a73232edcfe7c8f4eb4cb04af2bc15c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor_Surface
+    second: {fileID: 2100000, guid: a6bcb8d9b2695e74ab42baee8a257069, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Furnace_Red
+    second: {fileID: 2100000, guid: 376824dd17e95444c9ab3a50e0d249bc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: e827bf27c7e842d4981c88ab1054c24d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plant_Green
+    second: {fileID: 2100000, guid: 293c06920da9c69439837fcc020300aa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Player_BedGreen
+    second: {fileID: 2100000, guid: 13490985650d7a045827f8fc374a2850, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Player_Black
+    second: {fileID: 2100000, guid: e19b25dcd3dc4f542aa4a42c71a6c1bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Player_Grey
+    second: {fileID: 2100000, guid: bf0d91f15f4f61240983394a4874ecac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Player_Ladder
+    second: {fileID: 2100000, guid: 032b4f6e68441e94592b5fbee6f5dcce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Player_Red
+    second: {fileID: 2100000, guid: 21b0f568c51d5ef438243b2dc2c7450d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Player_Room
+    second: {fileID: 2100000, guid: 1b4528de076a3a343a5c6c0eb65d9496, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Player_White.001
+    second: {fileID: 2100000, guid: 82637c32dba763b4bac186aaea5ec517, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Refining_Orange
+    second: {fileID: 2100000, guid: 670b21bdab439534182f9e9e658fbd73, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Weave_Light
+    second: {fileID: 2100000, guid: d19177b327c7ea64ca5bf880f325b392, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -60,7 +60,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &677037151850380004
 MonoBehaviour:
@@ -968,8 +968,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6.3447495, y: 2.7832484, z: 6.244544}
-  m_Center: {x: 0, y: 1.4331992, z: 0.52727175}
+  m_Size: {x: 6.3447495, y: 2.7832484, z: 6.2812133}
+  m_Center: {x: 0, y: 1.4331992, z: 0.0063221455}
 --- !u!1 &5988765628079156376
 GameObject:
   m_ObjectHideFlags: 0
