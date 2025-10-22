@@ -12,7 +12,10 @@ public class CustomerOrderManager : MonoBehaviour
     public GameObject orderUIPrefab;
     public float baseOrderTime = 5f;
     public float orderInterval = 5f;
-    public int maxOrders = 5;
+    public int completedOrders = 0;
+
+    private bool canGenerateOrders = true;
+    private Coroutine generateRoutine;
 
     [Header("Player + Delivery")]
     public Transform deliveryZone;
@@ -24,25 +27,41 @@ public class CustomerOrderManager : MonoBehaviour
     public int currentReputation = 30;
     
     public CurrencyManager currencyManager;
+    public ShiftManager shiftManager;
 
     private List<CustomerOrder> activeOrders = new List<CustomerOrder>();
     private Dictionary<CustomerOrder, GameObject> orderUIObjects = new Dictionary<CustomerOrder, GameObject>();
 
     void Start()
     {
-        StartCoroutine(GenerateOrders());
+        if (shiftManager != null && !shiftManager.isNight)
+        {
+            generateRoutine = StartCoroutine(GenerateOrders());
+        }
     }
 
     void Update()
     {
+        if (shiftManager != null && shiftManager.isNight)
+            return;
+
         UpdateOrders();
         CheckDelivery();
     }
 
     IEnumerator GenerateOrders()
     {
-        for (int i = 0; i < maxOrders; i++)
+        for (int i = 0; i < shiftManager.orderQuota; i++)
         {
+            if (shiftManager.isNight)
+            {
+                Debug.Log("Night detected — stopping order generation.");
+                yield break; // exits coroutine completely
+            }
+
+            while (!canGenerateOrders)
+                yield return null;
+
             Debug.Log("Getting Customer by Reputation");
 
             CustomerData customer = GetCustomerByReputation();
@@ -64,7 +83,7 @@ public class CustomerOrderManager : MonoBehaviour
                 baseOrderTime
             );
 
-            Debug.Log($"Order {i + 1}/{maxOrders} generated");
+            Debug.Log($"Order {i + 1}/{shiftManager.orderQuota} generated");
 
             activeOrders.Add(newOrder);
             CreateOrderUI(newOrder, customer);
@@ -123,7 +142,7 @@ public class CustomerOrderManager : MonoBehaviour
     void CheckDelivery()
     {
         float distance = Vector3.Distance(player.position, deliveryZone.position);
-        Debug.Log($"Player distance: {distance}, Delivery radius: {deliveryRadius}");
+        //Debug.Log($"Player distance: {distance}, Delivery radius: {deliveryRadius}");
 
         if (distance > deliveryRadius) return;
 
@@ -165,6 +184,7 @@ public class CustomerOrderManager : MonoBehaviour
         currencyManager.AddMoney(order.payment);
         Debug.Log("Add Currency; Add Reputaion");
         currentReputation += 3;
+        completedOrders++;
 
         Destroy(orderUIObjects[order]);
         orderUIObjects.Remove(order);
@@ -199,4 +219,36 @@ public class CustomerOrderManager : MonoBehaviour
         if (possible.Count == 0) return null;
         return possible[Random.Range(0, possible.Count)];
     }
+
+    public void StopOrders()
+    {
+        canGenerateOrders = false;
+
+        if (generateRoutine != null)
+            StopCoroutine(generateRoutine);
+
+        Debug.Log("All orders stopped for the night.");
+
+        foreach (Transform child in orderUIParent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        activeOrders.Clear();
+        orderUIObjects.Clear();
+
+    }
+
+    public void ResumeOrders()
+    {
+        if (generateRoutine != null)
+            StopCoroutine(generateRoutine);
+
+        canGenerateOrders = true;
+        completedOrders = 0;
+
+        Debug.Log("[OrderManager] Orders resumed for the new day.");
+        generateRoutine = StartCoroutine(GenerateOrders());
+    }
+
 }
