@@ -18,4 +18,4 @@ MonoBehaviour:
   reputationRequiredMin: 0
   reputationRequiredMax: 40
   possibleOrders:
-  - {fileID: 11400000, guid: 3abe9d3948f52c94f9874af91eed6fb0, type: 2}
+  - {fileID: 11400000, guid: 715718c672a3ae64fbddea209953941b, type: 2}

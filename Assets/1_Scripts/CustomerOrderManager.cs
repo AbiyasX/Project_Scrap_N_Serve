@@ -2,6 +2,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
 
 public class CustomerOrderManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class CustomerOrderManager : MonoBehaviour
     public Transform orderUIParent;
     public GameObject orderUIPrefab;
     public float baseOrderTime = 5f;
+    public float orderInterval = 5f;
     public int maxOrders = 5;
 
     [Header("Player + Delivery")]
@@ -28,7 +30,7 @@ public class CustomerOrderManager : MonoBehaviour
 
     void Start()
     {
-        GenerateOrders();
+        StartCoroutine(GenerateOrders());
     }
 
     void Update()
@@ -37,14 +39,19 @@ public class CustomerOrderManager : MonoBehaviour
         CheckDelivery();
     }
 
-    void GenerateOrders()
+    IEnumerator GenerateOrders()
     {
         for (int i = 0; i < maxOrders; i++)
         {
             Debug.Log("Getting Customer by Reputation");
 
             CustomerData customer = GetCustomerByReputation();
-            if (customer == null) continue;
+            if (customer == null)
+            {
+                Debug.LogWarning("No suitable customer found. Skipping...");
+                yield return new WaitForSeconds(0.5f); 
+                continue;
+            }
 
             ItemData item = customer.possibleOrders[Random.Range(0, customer.possibleOrders.Length)];
             int payment = Random.Range(customer.minPayment, customer.maxPayment + 1);
@@ -57,12 +64,18 @@ public class CustomerOrderManager : MonoBehaviour
                 baseOrderTime
             );
 
-            Debug.Log("Generating Orderss...");
+            Debug.Log($"Order {i + 1}/{maxOrders} generated");
 
             activeOrders.Add(newOrder);
             CreateOrderUI(newOrder, customer);
+
+            yield return new WaitForSeconds(orderInterval);
+            //yield return new WaitForSeconds(orderInterval - (GameManager.currentDay * 0.2f));
         }
+
+        Debug.Log("All orders generated!");
     }
+
 
     void CreateOrderUI(CustomerOrder order, CustomerData customer)
     {
@@ -72,18 +85,20 @@ public class CustomerOrderManager : MonoBehaviour
         ui.transform.localScale = Vector3.one;
 
         Image icon = ui.transform.Find("Icon").GetComponentInChildren<Image>();
+        Image fill = ui.transform.Find("Icon/IconFill").GetComponent<Image>();
         TMP_Text qtyText = ui.GetComponentInChildren<TMP_Text>();
        
         icon.sprite = order.orderedItem.materialIcon;
         qtyText.text = $"{order.quantity}x {order.orderedItem.materialName}";
-       
+
+        fill.fillAmount = 0f;
 
         orderUIObjects.Add(order, ui);
 
         Debug.Log("OrderPrefab generarted!");
     }
 
-   
+
     void UpdateOrders()
     {
         foreach (CustomerOrder order in new List<CustomerOrder>(activeOrders))
@@ -107,39 +122,47 @@ public class CustomerOrderManager : MonoBehaviour
 
     void CheckDelivery()
     {
-        
         float distance = Vector3.Distance(player.position, deliveryZone.position);
+        Debug.Log($"Player distance: {distance}, Delivery radius: {deliveryRadius}");
+
         if (distance > deliveryRadius) return;
 
-       
         if (playerHoldPoint.childCount == 0)
         {
-            Debug.LogWarning(" You are not holding any item to deliver!");
+            Debug.LogWarning("No item held — cannot deliver.");
             return;
         }
 
         GameObject heldItem = playerHoldPoint.GetChild(0).gameObject;
+        ItemComponent heldItemComponent = heldItem.GetComponent<ItemComponent>();
+
+
+        Debug.Log($"Held item: {heldItem.name}");
+        Debug.Log($"Held item data: {heldItemComponent?.itemData?.materialName}");
+        Debug.Log($"Orders waiting: {activeOrders.Count}");
 
         foreach (CustomerOrder order in new List<CustomerOrder>(activeOrders))
         {
             if (order.isCompleted) continue;
 
-           
-            if (order.orderedItem.materialPrefab.name == heldItem.name.Replace("(Clone)", "").Trim())
+            Debug.Log($"Comparing held item '{heldItemComponent?.itemData?.materialName}' with order '{order.orderedItem.materialName}'");
+            if (order.orderedItem == heldItemComponent.itemData)
             {
                 CompleteOrder(order);
-                Destroy(heldItem); 
+                Destroy(heldItem);
                 Debug.Log($"Delivered {order.orderedItem.materialName} successfully!");
-                return; 
+                return;
             }
         }
 
         Debug.LogWarning("Wrong item! No matching order found for what you're holding.");
+
     }
 
     void CompleteOrder(CustomerOrder order)
     {
         order.isCompleted = true;
+        currencyManager.AddMoney(order.payment);
         Debug.Log("Add Currency; Add Reputaion");
         currentReputation += 3;
 
@@ -156,6 +179,7 @@ public class CustomerOrderManager : MonoBehaviour
         Destroy(orderUIObjects[order]);
         orderUIObjects.Remove(order);
         activeOrders.Remove(order);
+        order.isCompleted = true;
 
         Debug.Log($"Order failed: {order.orderedItem.materialName}. Reputation -5");
     }
