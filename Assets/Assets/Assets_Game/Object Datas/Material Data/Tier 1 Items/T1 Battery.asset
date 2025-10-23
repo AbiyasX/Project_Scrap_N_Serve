@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b8f5d7d226b4694ab4d8780229315ec, type: 3}
-  m_Name: T1 Tire
+  m_Name: T1 Battery
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  materialName: T1 Tire
-  materialIcon: {fileID: 1401009992, guid: 040fd3bd5e3877849925f45a9ee5864c, type: 3}
-  materialPrefab: {fileID: 3897753415854039512, guid: a140d8d8f03a1e745a8d13f6f24bd774, type: 3}
+  materialName: Battery
+  materialIcon: {fileID: 21300000, guid: 11797e8c69a970044ab1118db42bdf3a, type: 3}
+  materialPrefab: {fileID: 4830856260267259200, guid: fe66578622bd40b4f856cbd5ed225f7e, type: 3}

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Gas Mask Product
   m_EditorClassIdentifier: Assembly-CSharp::AssemblyRecipeData
   itemDatas:
-  - item: {fileID: 11400000, guid: 9e61887d853286a488bb5232042bfdcb, type: 2}
+  - item: {fileID: 11400000, guid: bcdaff7a5ba441147828badbf1d0a65e, type: 2}
     Quantity: 1
   - item: {fileID: 11400000, guid: bdbe06a56c353e84eb1f00464303e71a, type: 2}
     Quantity: 1
-  - item: {fileID: 11400000, guid: 000fbfd81f299444eb1a6feb081a7a45, type: 2}
+  - item: {fileID: 11400000, guid: 9e61887d853286a488bb5232042bfdcb, type: 2}
     Quantity: 1
-  product: {fileID: 11400000, guid: 218057755b2211346a0cf93ca2e585fb, type: 2}
+  product: {fileID: 11400000, guid: e9857dd221306994daa99fb74081bdba, type: 2}

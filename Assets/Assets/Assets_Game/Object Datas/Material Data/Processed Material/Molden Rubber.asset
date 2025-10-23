@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8f5d7d226b4694ab4d8780229315ec, type: 3}
   m_Name: Molden Rubber
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  materialName: Molden Rubber
+  materialName: MoldenRubber
   materialIcon: {fileID: 261947149, guid: 34c14196bc7ef094497184ba2910cef8, type: 3}
   materialPrefab: {fileID: 1667819669761515154, guid: 7fdb3688a15362b4e8e8a6ff0d8948e4, type: 3}

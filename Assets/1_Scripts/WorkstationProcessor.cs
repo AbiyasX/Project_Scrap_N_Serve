@@ -37,7 +37,7 @@ public class WorkstationProcessor : MonoBehaviour
         foreach (var recipe in workstationData.recipes)
         {
             if (inputItem.name.Replace("(Clone)", "").Trim()
-                .Equals(recipe.outputPrefab.name, StringComparison.OrdinalIgnoreCase))
+                .Equals(recipe.outputPrefab.materialName, StringComparison.OrdinalIgnoreCase))
             {
                 Debug.Log($"[{workstationData.workstationName}] Ignoring output item: {inputItem.name}");
                 return;
@@ -47,7 +47,7 @@ public class WorkstationProcessor : MonoBehaviour
         foreach (var recipe in workstationData.recipes)
         {
             if (inputItem.name.Replace("(Clone)", "").Trim()
-                .Equals(recipe.inputPrefab.name, StringComparison.OrdinalIgnoreCase))
+                .Equals(recipe.inputPrefab.materialName, StringComparison.OrdinalIgnoreCase))
             {
                 StartCoroutine(ProcessItem(recipe, inputItem));
                 return;
@@ -70,7 +70,7 @@ public class WorkstationProcessor : MonoBehaviour
         {
             
             GameObject Product = Instantiate(recipe.outputPrefab.materialPrefab, outputSpawnPoint.position, outputSpawnPoint.rotation);
-            Product.name = recipe.outputPrefab.name;
+            Product.name = recipe.outputPrefab.materialName;
             Vector3 Direction = outputSpawnPoint.forward;
             Product.GetComponent<Rigidbody>().AddForce(Direction * 1.5f, ForceMode.Impulse);
             Debug.Log($"[{workstationData.workstationName}] Created {recipe.outputPrefab.name}!");

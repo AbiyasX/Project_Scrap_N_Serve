@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b8f5d7d226b4694ab4d8780229315ec, type: 3}
-  m_Name: T1 Battery
+  m_Name: T2 Bullet
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  materialName: T1 Battery
-  materialIcon: {fileID: 21300000, guid: 11797e8c69a970044ab1118db42bdf3a, type: 3}
-  materialPrefab: {fileID: 4830856260267259200, guid: fe66578622bd40b4f856cbd5ed225f7e, type: 3}
+  materialName: Bullet
+  materialIcon: {fileID: -1029863963, guid: 74053d02d83cb6c46b6f32d285fd0249, type: 3}
+  materialPrefab: {fileID: 740225231520571219, guid: 0e93d08c68a6b5a4d8b7d2451b135710, type: 3}

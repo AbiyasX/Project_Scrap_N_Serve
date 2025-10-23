@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8f5d7d226b4694ab4d8780229315ec, type: 3}
   m_Name: Copper Sheet
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  materialName: Copper Sheet
+  materialName: CopperSheet
   materialIcon: {fileID: 1079511174, guid: 1f37aa1994bb5454a8f2d37db9fb07af, type: 3}
   materialPrefab: {fileID: 4039221781562942635, guid: 9065d197227b6534580841b01c9d7c56, type: 3}

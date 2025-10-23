@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b8f5d7d226b4694ab4d8780229315ec, type: 3}
-  m_Name: T1 Knife
+  m_Name: T2 Binoculars
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  materialName: T1 Knife
-  materialIcon: {fileID: 21300000, guid: 07ab5b406c8a93e4c876f7cfec4ab633, type: 3}
-  materialPrefab: {fileID: 735011352366813242, guid: b10817c8db332c14080245a90d741acb, type: 3}
+  materialName: Binoculars
+  materialIcon: {fileID: -1580193818, guid: 83acce1b69a14d34c9c36de206e774d4, type: 3}
+  materialPrefab: {fileID: 8173365891947301565, guid: b913d0dfea831024e8f31cb64dd6cab5, type: 3}

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8f5d7d226b4694ab4d8780229315ec, type: 3}
   m_Name: Metal Sheet
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  materialName: Metal Sheet
+  materialName: MetalSheet
   materialIcon: {fileID: 66381044, guid: 6077ab7cf70733745bfb091fa2dcf85e, type: 3}
   materialPrefab: {fileID: 296005129688205260, guid: f98ada86ec4a0a847ba8fc38dff4b74a, type: 3}

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b8f5d7d226b4694ab4d8780229315ec, type: 3}
-  m_Name: T3 Night Vision
+  m_Name: T2 Bag
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  materialName: T3 Night Vision
-  materialIcon: {fileID: 21300000, guid: 011e1b56b8c74f14a83e5ddfeab093ef, type: 3}
-  materialPrefab: {fileID: 8126771270420267901, guid: b2c1fc24930d8a04c8a83657f1c447bf, type: 3}
+  materialName: Bag
+  materialIcon: {fileID: -1638302377, guid: a2cf33c920cfc1443aebaca1f19c6119, type: 3}
+  materialPrefab: {fileID: 1555547267014720385, guid: 7c951f6d58ceacc479659c341c47a850, type: 3}

@@ -161,8 +161,8 @@ public class AssemblySystem : MonoBehaviour
         }
 
         yield return null;
-        Instantiate(recipe.product.materialPrefab, productSpawnPoint.position, Quaternion.identity);
-
+        GameObject Product = Instantiate(recipe.product.materialPrefab, productSpawnPoint.position, Quaternion.identity);
+        Product.name = recipe.product.materialName;
         yield return null;
         CheckForRecipeMatch();
     }

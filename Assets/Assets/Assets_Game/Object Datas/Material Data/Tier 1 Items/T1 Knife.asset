@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b8f5d7d226b4694ab4d8780229315ec, type: 3}
-  m_Name: T1 Shoes
+  m_Name: T1 Knife
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  materialName: T1 Shoes
-  materialIcon: {fileID: 21300000, guid: 7c94aef1efef1854ebcf27bae2662d76, type: 3}
-  materialPrefab: {fileID: 3143482937158553570, guid: 76d06973dc896a641a257d05943dcba7, type: 3}
+  materialName: Knife
+  materialIcon: {fileID: 21300000, guid: 07ab5b406c8a93e4c876f7cfec4ab633, type: 3}
+  materialPrefab: {fileID: 735011352366813242, guid: b10817c8db332c14080245a90d741acb, type: 3}

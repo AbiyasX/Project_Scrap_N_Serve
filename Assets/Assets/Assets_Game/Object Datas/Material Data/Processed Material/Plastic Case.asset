@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8f5d7d226b4694ab4d8780229315ec, type: 3}
   m_Name: Plastic Case
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  materialName: Plastic Case
+  materialName: PlasticCase
   materialIcon: {fileID: -321443934, guid: 96355c260729c7545abe90086fb3c085, type: 3}
   materialPrefab: {fileID: 4269938041261613300, guid: 3a4a16538a4354f43a7f6b163720fdb3, type: 3}

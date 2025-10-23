@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b8f5d7d226b4694ab4d8780229315ec, type: 3}
-  m_Name: T3 Explosives
+  m_Name: T1 Tire
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  materialName: T3 Explosives
-  materialIcon: {fileID: 21300000, guid: 2b37daec85496234db8ef3de45c28c68, type: 3}
-  materialPrefab: {fileID: 7816246609005906637, guid: f51d68c0293726e4fa1f1256efe1b37a, type: 3}
+  materialName: Tire
+  materialIcon: {fileID: 1401009992, guid: 040fd3bd5e3877849925f45a9ee5864c, type: 3}
+  materialPrefab: {fileID: 3897753415854039512, guid: a140d8d8f03a1e745a8d13f6f24bd774, type: 3}
