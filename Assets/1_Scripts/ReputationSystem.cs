@@ -26,15 +26,13 @@ public class ReputationSystem : MonoBehaviour
     }
     public void ReputationStatus()
     {
-        switch(playerCogs >= quota)
-        {
-            case true:
-                IncreasedReputation();
-                break;
-                case false:
-                DecreasedReputation();
-                break;
-        }
+        
+        bool isQuota = playerCogs >= quota;
+        if (isQuota)
+            IncreasedReputation();
+        else
+            DecreasedReputation();
+
         if (currentReputation >= maxReputation)
         {
             currentReputation = maxReputation;
@@ -43,6 +41,8 @@ public class ReputationSystem : MonoBehaviour
         }
 
     }
+
+
     public void IncreasedReputation()
     {
         currentReputation += 10;
