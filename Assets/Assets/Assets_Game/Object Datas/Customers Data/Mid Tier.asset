@@ -10,13 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e30567506c74c843843a3abd5c52a36, type: 3}
-  m_Name: MidTier
+  m_Name: Mid Tier
   m_EditorClassIdentifier: Assembly-CSharp::CustomerData
-  customerTier: Mid
+  customerTier: 1
   minPayment: 15
   maxPayment: 20
   reputationRequiredMin: 41
   reputationRequiredMax: 79
   possibleOrders:
-  - {fileID: 11400000, guid: 3ecf3bce549fa7b488e94d9345f3d143, type: 2}
-  - {fileID: 11400000, guid: 66cd7097f46541f46ae816b99986e4a2, type: 2}
+  - {fileID: 11400000, guid: 11ce377fe84961d4cbf337cd6479cc53, type: 2}
+  - {fileID: 11400000, guid: fef2143e162b8584ca43e68f20d2e4d2, type: 2}
+  - {fileID: 11400000, guid: fd79c7dc155e9ff469008f5e1ba024cf, type: 2}
+  - {fileID: 11400000, guid: 2a57f25f804d84841a48f0dcebfaf3d3, type: 2}
+  - {fileID: 11400000, guid: d5b32b280b0f7db4fbf2de2e11bc90c8, type: 2}
+  - {fileID: 11400000, guid: d02e40b5ec9ba384abd978db85228fd1, type: 2}

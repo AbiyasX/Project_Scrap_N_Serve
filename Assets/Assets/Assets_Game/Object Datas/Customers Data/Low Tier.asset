@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e30567506c74c843843a3abd5c52a36, type: 3}
-  m_Name: LowTier
+  m_Name: Low Tier
   m_EditorClassIdentifier: Assembly-CSharp::CustomerData
-  customerTier: Low
+  customerTier: 0
   minPayment: 5
   maxPayment: 10
   reputationRequiredMin: 0
   reputationRequiredMax: 40
   possibleOrders:
-  - {fileID: 11400000, guid: 715718c672a3ae64fbddea209953941b, type: 2}
-  - {fileID: 11400000, guid: d3e1e2557814af843b5a7c26b067c7bd, type: 2}
-  - {fileID: 11400000, guid: d4f33b4cd55f1c64d86aa6a2567d6901, type: 2}
+  - {fileID: 11400000, guid: e6dc4ebf9ab44d0418217eafde625df2, type: 2}
+  - {fileID: 11400000, guid: 7457307259b22e947aa1856fa4915331, type: 2}
+  - {fileID: 11400000, guid: 4b119f2a35ac3ff4bab38d4c5286fa5d, type: 2}
+  - {fileID: 11400000, guid: 273c8e7c31595d94fb4ca8da6119a6b5, type: 2}
+  - {fileID: 11400000, guid: 90848ecb4d2f0244dade4261d420259b, type: 2}

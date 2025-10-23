@@ -1,15 +1,17 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class CustomerOrderManager : MonoBehaviour
 {
     [Header("Order Setup")]
     public List<CustomerData> customers;
+
     public Transform orderUIParent;
     public GameObject orderUIPrefab;
+    public GameObject requiredItemUIPrefab; // prefab for ingredient icons (must have Image + TMP_Text)
     public float baseOrderTime = 10f;
     public float orderInterval = 5f;
     public int completedOrders = 0;
@@ -19,20 +21,21 @@ public class CustomerOrderManager : MonoBehaviour
 
     [Header("Player + Delivery")]
     public Transform deliveryZone;
+
     public float deliveryRadius = 2f;
     public Transform player;
     public Transform playerHoldPoint;
 
     [Header("Currency & Reputation")]
     public int currentReputation = 30;
-    
+
     public CurrencyManager currencyManager;
     public ShiftManager shiftManager;
 
     private List<CustomerOrder> activeOrders = new List<CustomerOrder>();
     private Dictionary<CustomerOrder, GameObject> orderUIObjects = new Dictionary<CustomerOrder, GameObject>();
 
-    void Start()
+    private void Start()
     {
         if (shiftManager != null && !shiftManager.isNight)
         {
@@ -40,7 +43,7 @@ public class CustomerOrderManager : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         if (shiftManager != null && shiftManager.isNight)
             return;
@@ -49,83 +52,102 @@ public class CustomerOrderManager : MonoBehaviour
         CheckDelivery();
     }
 
-    IEnumerator GenerateOrders()
+    private IEnumerator GenerateOrders()
     {
         for (int i = 0; i < shiftManager.orderQuota; i++)
         {
             if (shiftManager.isNight)
             {
                 Debug.Log("Night detected — stopping order generation.");
-                yield break; // exits coroutine completely
+                yield break;
             }
 
             while (!canGenerateOrders)
                 yield return null;
 
-            Debug.Log("Getting Customer by Reputation");
-
             CustomerData customer = GetCustomerByReputation();
             if (customer == null)
             {
                 Debug.LogWarning("No suitable customer found. Skipping...");
-                yield return new WaitForSeconds(0.5f); 
+                yield return new WaitForSeconds(0.5f);
                 continue;
             }
 
-            ItemData item = customer.possibleOrders[Random.Range(0, customer.possibleOrders.Length)];
+            AssemblyRecipeData item = customer.possibleOrders[Random.Range(0, customer.possibleOrders.Length)];
             int payment = Random.Range(customer.minPayment, customer.maxPayment + 1);
 
             CustomerOrder newOrder = new CustomerOrder(
                 System.Guid.NewGuid().ToString(),
-                item,
+                item.product,
                 Random.Range(1, 3),
                 payment,
                 baseOrderTime
             );
 
-            Debug.Log($"Order {i + 1}/{shiftManager.orderQuota} generated");
-
             activeOrders.Add(newOrder);
             CreateOrderUI(newOrder, customer);
 
             yield return new WaitForSeconds(orderInterval);
-            //yield return new WaitForSeconds(orderInterval - (GameManager.currentDay * 0.2f));
         }
 
         Debug.Log("All orders generated!");
     }
 
-
     void CreateOrderUI(CustomerOrder order, CustomerData customer)
     {
-        Debug.Log("Generating orderPrefab");
+        Debug.Log("Generating Order UI...");
 
         GameObject ui = Instantiate(orderUIPrefab, orderUIParent);
         ui.transform.localScale = Vector3.one;
 
-        Transform iconParent = ui.transform.Find("Icon");
-        Image icon = iconParent.GetComponent<Image>();
-        Image fill = iconParent.Find("IconFill").GetComponent<Image>();
+        // Safely find main UI components
+        Image[] allImages = ui.GetComponentsInChildren<Image>(true);
+        Slider orderMeter = ui.GetComponentInChildren<Slider>(true);
+        TMP_Text qtyText = ui.GetComponentInChildren<TMP_Text>(true);
 
-        fill.sprite = order.orderedItem.materialIcon;
-        fill.type = Image.Type.Filled;
-        fill.fillMethod = Image.FillMethod.Vertical;
-        fill.fillOrigin = (int)Image.OriginVertical.Bottom;
-        fill.fillAmount = 0f;
+        // Try to detect item icon — the first Image not part of required items
+        Image icon = null;
+        foreach (var img in allImages)
+        {
+            if (img.transform.name.ToLower().Contains("itemicon"))
+            {
+                icon = img;
+                break;
+            }
+        }
 
-        TMP_Text qtyText = ui.GetComponentInChildren<TMP_Text>();
-        icon.sprite = order.orderedItem.materialIcon;
-        qtyText.text = $"{order.quantity}x {order.orderedItem.materialName}";
+        // Try to find ingredient parent
+        Transform reqUIParent = ui.transform.Find("RecipeRequirmentUI");
+
+
+
+            icon.sprite = order.orderedItem.materialIcon;
+            //qtyText.text = $"{order.quantity}x {order.orderedItem.materialName}";
+            orderMeter.value = 0f;
+
+        // Spawn ingredient icons (bonus tip)
+        AssemblyRecipeData recipeData = FindRecipeForProduct(order.orderedItem);
+       
+        foreach (var ingredient in recipeData.itemDatas)
+        {
+            GameObject reqIcon = Instantiate(requiredItemUIPrefab, reqUIParent);
+            Image reqImg = reqIcon.transform.Find("RequirdItemImage").GetComponent<Image>();
+            TMP_Text reqText = reqIcon.GetComponentInChildren<TMP_Text>();
+
+            
+                reqImg.sprite = ingredient.item.materialIcon;
+            
+                reqText.text = "x" + ingredient.Quantity;
+        }
+        
 
         order.timeRemaining = order.totalTime;
-
         orderUIObjects.Add(order, ui);
 
-        Debug.Log("OrderPrefab generarted!");
+        Debug.Log("Order UI generated successfully!");
     }
 
-
-    void UpdateOrders()
+    private void UpdateOrders()
     {
         foreach (CustomerOrder order in new List<CustomerOrder>(activeOrders))
         {
@@ -136,16 +158,16 @@ public class CustomerOrderManager : MonoBehaviour
             if (orderUIObjects.ContainsKey(order))
             {
                 var ui = orderUIObjects[order];
-                Image fill = ui.transform.Find("Icon/IconFill").GetComponent<Image>();
+                Slider orderMeter = ui.transform.Find("OrderMeter").GetComponent<Slider>();
 
                 if (order.totalTime > 0f)
                 {
-                    float targetFill = Mathf.Clamp01((order.totalTime - order.timeRemaining) / order.totalTime);
-                    fill.fillAmount = Mathf.Lerp(fill.fillAmount, targetFill, Time.deltaTime * 10f);
+                    float progress = Mathf.Clamp01((order.totalTime - order.timeRemaining) / order.totalTime);
+                    orderMeter.value = Mathf.Lerp(orderMeter.value, progress, Time.deltaTime * 5f);
                 }
                 else
                 {
-                    fill.fillAmount = 1f;
+                    orderMeter.value = 1f;
                 }
             }
 
@@ -156,11 +178,9 @@ public class CustomerOrderManager : MonoBehaviour
         }
     }
 
-    void CheckDelivery()
+    private void CheckDelivery()
     {
         float distance = Vector3.Distance(player.position, deliveryZone.position);
-        //Debug.Log($"Player distance: {distance}, Delivery radius: {deliveryRadius}");
-
         if (distance > deliveryRadius) return;
 
         if (playerHoldPoint.childCount == 0)
@@ -172,34 +192,25 @@ public class CustomerOrderManager : MonoBehaviour
         GameObject heldItem = playerHoldPoint.GetChild(0).gameObject;
         ItemComponent heldItemComponent = heldItem.GetComponent<ItemComponent>();
 
-
-        Debug.Log($"Held item: {heldItem.name}");
-        Debug.Log($"Held item data: {heldItemComponent?.itemData?.materialName}");
-        Debug.Log($"Orders waiting: {activeOrders.Count}");
-
         foreach (CustomerOrder order in new List<CustomerOrder>(activeOrders))
         {
             if (order.isCompleted) continue;
 
-            Debug.Log($"Comparing held item '{heldItemComponent?.itemData?.materialName}' with order '{order.orderedItem.materialName}'");
             if (order.orderedItem == heldItemComponent.itemData)
             {
                 CompleteOrder(order);
                 Destroy(heldItem);
-                Debug.Log($"Delivered {order.orderedItem.materialName} successfully!");
                 return;
             }
         }
 
-        Debug.LogWarning("Wrong item! No matching order found for what you're holding.");
-
+        Debug.LogWarning("Wrong item! No matching order found.");
     }
 
-    void CompleteOrder(CustomerOrder order)
+    private void CompleteOrder(CustomerOrder order)
     {
         order.isCompleted = true;
         currencyManager.AddMoney(order.payment);
-        Debug.Log("Add Currency; Add Reputaion");
         currentReputation += 3;
         completedOrders++;
 
@@ -210,7 +221,7 @@ public class CustomerOrderManager : MonoBehaviour
         Debug.Log($"Completed Order: {order.orderedItem.materialName}! +{order.payment} Cogs | +Reputation");
     }
 
-    void FailOrder(CustomerOrder order)
+    private void FailOrder(CustomerOrder order)
     {
         currentReputation -= 5;
         Destroy(orderUIObjects[order]);
@@ -221,20 +232,28 @@ public class CustomerOrderManager : MonoBehaviour
         Debug.Log($"Order failed: {order.orderedItem.materialName}. Reputation -5");
     }
 
-    CustomerData GetCustomerByReputation()
+    private CustomerData GetCustomerByReputation()
     {
-        Debug.Log($"Checking customers... Reputation = {currentReputation}");
-        foreach (var c in customers)
-        {
-            Debug.Log($"Customer: {c.name} | Min: {c.reputationRequiredMin}, Max: {c.reputationRequiredMax}");
-        }
-
         List<CustomerData> possible = customers.FindAll(c =>
             currentReputation >= c.reputationRequiredMin &&
             currentReputation <= c.reputationRequiredMax);
 
         if (possible.Count == 0) return null;
         return possible[Random.Range(0, possible.Count)];
+    }
+
+    private AssemblyRecipeData FindRecipeForProduct(ItemData product)
+    {
+        // Looks through all customer data to find matching recipe
+        foreach (CustomerData c in customers)
+        {
+            foreach (var recipe in c.possibleOrders)
+            {
+                if (recipe.product == product)
+                    return recipe;
+            }
+        }
+        return null;
     }
 
     public void StopOrders()
@@ -244,16 +263,13 @@ public class CustomerOrderManager : MonoBehaviour
         if (generateRoutine != null)
             StopCoroutine(generateRoutine);
 
-        Debug.Log("All orders stopped for the night.");
-
         foreach (Transform child in orderUIParent)
-        {
             Destroy(child.gameObject);
-        }
 
         activeOrders.Clear();
         orderUIObjects.Clear();
 
+        Debug.Log("Orders stopped for the night.");
     }
 
     public void ResumeOrders()
@@ -267,5 +283,4 @@ public class CustomerOrderManager : MonoBehaviour
         Debug.Log("[OrderManager] Orders resumed for the new day.");
         generateRoutine = StartCoroutine(GenerateOrders());
     }
-
 }

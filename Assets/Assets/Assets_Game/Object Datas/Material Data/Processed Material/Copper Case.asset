@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Copper Case
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   materialName: CopperCase
-  materialIcon: {fileID: -1068658259, guid: 455a6b8e26b79fe4cbea352a4c9b4abb, type: 3}
+  materialIcon: {fileID: 351082567, guid: 87d8ba89058b3c2488a5e644acb1cdd9, type: 3}
   materialPrefab: {fileID: 5369809636889311262, guid: 7d8fc926da78ca94f88752a65c16e9e2, type: 3}

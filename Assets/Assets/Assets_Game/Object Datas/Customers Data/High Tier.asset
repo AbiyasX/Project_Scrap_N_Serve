@@ -10,12 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e30567506c74c843843a3abd5c52a36, type: 3}
-  m_Name: HighTier
+  m_Name: High Tier
   m_EditorClassIdentifier: Assembly-CSharp::CustomerData
-  customerTier: High
+  customerTier: 2
   minPayment: 30
   maxPayment: 50
   reputationRequiredMin: 80
   reputationRequiredMax: 100
   possibleOrders:
-  - {fileID: 11400000, guid: 402a93b028f41904a81af3d5f7c81c49, type: 2}
+  - {fileID: 11400000, guid: 4a5bb76f2849dbf4d9cca386c2de08d7, type: 2}
+  - {fileID: 11400000, guid: cffbf5c081e52694ca0b032a8e2d6eab, type: 2}
+  - {fileID: 11400000, guid: 6ba9e017f2a7aaa408c5de9b0df08a99, type: 2}
+  - {fileID: 11400000, guid: f416eb0c0457fc2498cda615a51f939c, type: 2}
+  - {fileID: 11400000, guid: 006ce7eda68f00140b41e50db4f872cc, type: 2}
