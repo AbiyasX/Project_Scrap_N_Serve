@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   materialName: Glass
   materialIcon: {fileID: 326130062, guid: b8a1a3aedbf13b34cbab0b21e0099374, type: 3}
-  materialPrefab: {fileID: 7910615617196378382, guid: 8dd326c7e46f53443a8c376b868e038d, type: 3}
+  materialPrefab: {fileID: 461072184813054516, guid: 3aede1820ebcaed40a2afeda036591e2, type: 3}

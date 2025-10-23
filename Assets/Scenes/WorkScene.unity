@@ -3269,6 +3269,9 @@ MonoBehaviour:
   workstations:
   - {fileID: 11400000, guid: 3bc331954e045dc4eaf26488c429f327, type: 2}
   - {fileID: 11400000, guid: 630bc751b6dd8684ea1f395e985b4575, type: 2}
+  - {fileID: 11400000, guid: 0d2f951afcc1cc64db0b37125b1e9d1a, type: 2}
+  - {fileID: 11400000, guid: cba293f115d4f9e48bb1ed8d1aaa4957, type: 2}
+  - {fileID: 11400000, guid: 14fea577839041b42863a38a982c0489, type: 2}
   shopUIParent: {fileID: 802808563}
   shopButtonPrefab: {fileID: 131118689474895695, guid: ea7928ca5b46d384d8378e61f2508252, type: 3}
   shopUI: {fileID: 1846839957}
@@ -3825,6 +3828,70 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4951165612023533744, guid: 3e1210d6d12a2344880b9a3582b0e225, type: 3}
+      propertyPath: productRecipes.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951165612023533744, guid: 3e1210d6d12a2344880b9a3582b0e225, type: 3}
+      propertyPath: 'productRecipes.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e6dc4ebf9ab44d0418217eafde625df2, type: 2}
+    - target: {fileID: 4951165612023533744, guid: 3e1210d6d12a2344880b9a3582b0e225, type: 3}
+      propertyPath: 'productRecipes.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 7457307259b22e947aa1856fa4915331, type: 2}
+    - target: {fileID: 4951165612023533744, guid: 3e1210d6d12a2344880b9a3582b0e225, type: 3}
+      propertyPath: 'productRecipes.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 4b119f2a35ac3ff4bab38d4c5286fa5d, type: 2}
+    - target: {fileID: 4951165612023533744, guid: 3e1210d6d12a2344880b9a3582b0e225, type: 3}
+      propertyPath: 'productRecipes.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 273c8e7c31595d94fb4ca8da6119a6b5, type: 2}
+    - target: {fileID: 4951165612023533744, guid: 3e1210d6d12a2344880b9a3582b0e225, type: 3}
+      propertyPath: 'productRecipes.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 90848ecb4d2f0244dade4261d420259b, type: 2}
+    - target: {fileID: 4951165612023533744, guid: 3e1210d6d12a2344880b9a3582b0e225, type: 3}
+      propertyPath: 'productRecipes.Array.data[6]'
+      value: 
+      objectReference: {fileID: 11400000, guid: fd79c7dc155e9ff469008f5e1ba024cf, type: 2}
+    - target: {fileID: 4951165612023533744, guid: 3e1210d6d12a2344880b9a3582b0e225, type: 3}
+      propertyPath: 'productRecipes.Array.data[7]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d02e40b5ec9ba384abd978db85228fd1, type: 2}
+    - target: {fileID: 4951165612023533744, guid: 3e1210d6d12a2344880b9a3582b0e225, type: 3}
+      propertyPath: 'productRecipes.Array.data[8]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d5b32b280b0f7db4fbf2de2e11bc90c8, type: 2}
+    - target: {fileID: 4951165612023533744, guid: 3e1210d6d12a2344880b9a3582b0e225, type: 3}
+      propertyPath: 'productRecipes.Array.data[9]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 11ce377fe84961d4cbf337cd6479cc53, type: 2}
+    - target: {fileID: 4951165612023533744, guid: 3e1210d6d12a2344880b9a3582b0e225, type: 3}
+      propertyPath: 'productRecipes.Array.data[10]'
+      value: 
+      objectReference: {fileID: 11400000, guid: fef2143e162b8584ca43e68f20d2e4d2, type: 2}
+    - target: {fileID: 4951165612023533744, guid: 3e1210d6d12a2344880b9a3582b0e225, type: 3}
+      propertyPath: 'productRecipes.Array.data[11]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 006ce7eda68f00140b41e50db4f872cc, type: 2}
+    - target: {fileID: 4951165612023533744, guid: 3e1210d6d12a2344880b9a3582b0e225, type: 3}
+      propertyPath: 'productRecipes.Array.data[12]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 4a5bb76f2849dbf4d9cca386c2de08d7, type: 2}
+    - target: {fileID: 4951165612023533744, guid: 3e1210d6d12a2344880b9a3582b0e225, type: 3}
+      propertyPath: 'productRecipes.Array.data[13]'
+      value: 
+      objectReference: {fileID: 11400000, guid: cffbf5c081e52694ca0b032a8e2d6eab, type: 2}
+    - target: {fileID: 4951165612023533744, guid: 3e1210d6d12a2344880b9a3582b0e225, type: 3}
+      propertyPath: 'productRecipes.Array.data[14]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 6ba9e017f2a7aaa408c5de9b0df08a99, type: 2}
+    - target: {fileID: 4951165612023533744, guid: 3e1210d6d12a2344880b9a3582b0e225, type: 3}
+      propertyPath: 'productRecipes.Array.data[15]'
+      value: 
+      objectReference: {fileID: 11400000, guid: f416eb0c0457fc2498cda615a51f939c, type: 2}
     - target: {fileID: 5094374712110824841, guid: 3e1210d6d12a2344880b9a3582b0e225, type: 3}
       propertyPath: fadeImage
       value: 
@@ -3885,6 +3952,18 @@ PrefabInstance:
       propertyPath: workstationShopManager
       value: 
       objectReference: {fileID: 1846839959}
+    - target: {fileID: 7996179570791433829, guid: 3e1210d6d12a2344880b9a3582b0e225, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7996179570791433829, guid: 3e1210d6d12a2344880b9a3582b0e225, type: 3}
+      propertyPath: m_Size.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7996179570791433829, guid: 3e1210d6d12a2344880b9a3582b0e225, type: 3}
+      propertyPath: m_Center.z
+      value: -0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 9076570842089699851, guid: 3e1210d6d12a2344880b9a3582b0e225, type: 3}
       propertyPath: m_Name
       value: SurfaceArea_Room

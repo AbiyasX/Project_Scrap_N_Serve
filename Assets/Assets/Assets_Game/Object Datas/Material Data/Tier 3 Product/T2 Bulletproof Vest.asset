@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8f5d7d226b4694ab4d8780229315ec, type: 3}
+  m_Name: T2 Bulletproof Vest
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  materialName: T2 Bulletproof Vest
+  materialIcon: {fileID: -965879935, guid: 01f91335d33d07f45a39069cb48608a8, type: 3}
+  materialPrefab: {fileID: 5686602995366979373, guid: 258c163a19acafe4a85301a281db78d6, type: 3}

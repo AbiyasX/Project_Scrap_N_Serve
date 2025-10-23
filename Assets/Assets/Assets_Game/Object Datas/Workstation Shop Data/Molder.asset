@@ -21,3 +21,6 @@ MonoBehaviour:
   - inputPrefab: {fileID: 11400000, guid: 4eef4865b2cdab4478ca77baa83e1eb4, type: 2}
     outputPrefab: {fileID: 11400000, guid: 9e61887d853286a488bb5232042bfdcb, type: 2}
     craftingTime: 5
+  - inputPrefab: {fileID: 11400000, guid: 31711d9cc6340f849a7ab68acee0a6cc, type: 2}
+    outputPrefab: {fileID: 11400000, guid: bdbe06a56c353e84eb1f00464303e71a, type: 2}
+    craftingTime: 5

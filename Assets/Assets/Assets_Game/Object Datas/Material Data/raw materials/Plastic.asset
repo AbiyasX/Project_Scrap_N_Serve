@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   materialName: Plastic
   materialIcon: {fileID: -916124393, guid: 4de6f3f7c39548b49ab235b2a77e39fa, type: 3}
-  materialPrefab: {fileID: 876691843316771410, guid: 310b7f23b0952b34886e703fc4dee0dc, type: 3}
+  materialPrefab: {fileID: 3051392166117132481, guid: 310b7f23b0952b34886e703fc4dee0dc, type: 3}

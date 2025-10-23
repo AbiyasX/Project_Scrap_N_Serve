@@ -19,5 +19,5 @@ MonoBehaviour:
   facilityUpgrade: 525
   facilityLevel: 0
   facilityModel: {fileID: 8390803791580859898, guid: 1aa049f9eabf12842943cbcaf7d735db, type: 3}
-  productionMaterial: {fileID: 11400000, guid: b9c516a79ae383a43ad2666ce415db6d, type: 2}
+  productionMaterial: {fileID: 11400000, guid: 1af3655002180304e9b1ac3eec74e083, type: 2}
   isPurchased: 0

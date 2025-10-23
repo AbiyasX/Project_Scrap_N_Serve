@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8f5d7d226b4694ab4d8780229315ec, type: 3}
+  m_Name: Copper WIring
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  materialName: Copper Wiring
+  materialIcon: {fileID: -563811109, guid: d17d18a7529137c4c8b6b1be674d8f80, type: 3}
+  materialPrefab: {fileID: 4510709294238960793, guid: 7be8327507cf43d4dad3f97a60f0f334, type: 3}

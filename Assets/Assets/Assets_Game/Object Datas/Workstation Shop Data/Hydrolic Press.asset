@@ -18,6 +18,12 @@ MonoBehaviour:
   workstationModel: {fileID: 5870812265622850899, guid: 22677bbee76e8b343990aef70848866d, type: 3}
   isPurchased: 0
   recipes:
-  - inputPrefab: {fileID: 11400000, guid: ad88f65ca239c7e4ca860948c8e236f4, type: 2}
+  - inputPrefab: {fileID: 11400000, guid: 32fee0a6c3502f448948f0f2c2f205a4, type: 2}
     outputPrefab: {fileID: 11400000, guid: 4eef4865b2cdab4478ca77baa83e1eb4, type: 2}
+    craftingTime: 5
+  - inputPrefab: {fileID: 11400000, guid: 1af3655002180304e9b1ac3eec74e083, type: 2}
+    outputPrefab: {fileID: 11400000, guid: 018a65713b98e194f9cb75458c4ade9a, type: 2}
+    craftingTime: 5
+  - inputPrefab: {fileID: 11400000, guid: 07fa17530ba450e41bac2dfe80529cae, type: 2}
+    outputPrefab: {fileID: 11400000, guid: 4b8e89671d390cd499f945e327d0db00, type: 2}
     craftingTime: 5

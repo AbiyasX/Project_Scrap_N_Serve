@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8f5d7d226b4694ab4d8780229315ec, type: 3}
+  m_Name: T2 Bag
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  materialName: T2 Bag
+  materialIcon: {fileID: -1638302377, guid: a2cf33c920cfc1443aebaca1f19c6119, type: 3}
+  materialPrefab: {fileID: 1555547267014720385, guid: 7c951f6d58ceacc479659c341c47a850, type: 3}

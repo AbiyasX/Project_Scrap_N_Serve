@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d84af57b4d662144bb3df53d860f0fd, type: 3}
+  m_Name: Shoes Product
+  m_EditorClassIdentifier: Assembly-CSharp::AssemblyRecipeData
+  itemDatas:
+  - item: {fileID: 11400000, guid: bdbe06a56c353e84eb1f00464303e71a, type: 2}
+    Quantity: 1
+  - item: {fileID: 11400000, guid: 2d5beec980e61ae4fb207b55f5995f76, type: 2}
+    Quantity: 2
+  product: {fileID: 11400000, guid: 9b8a590a7eb67c94ca0635fcde924248, type: 2}

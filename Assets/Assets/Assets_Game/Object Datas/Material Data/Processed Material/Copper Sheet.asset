@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8f5d7d226b4694ab4d8780229315ec, type: 3}
+  m_Name: Copper Sheet
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  materialName: Copper Sheet
+  materialIcon: {fileID: 1079511174, guid: 1f37aa1994bb5454a8f2d37db9fb07af, type: 3}
+  materialPrefab: {fileID: 4039221781562942635, guid: 9065d197227b6534580841b01c9d7c56, type: 3}
