@@ -31,6 +31,7 @@ public class ShiftManager : MonoBehaviour
     [Header("Day Tracker")]
     public int dayCount = 1;
     public int orderQuota = 30;
+    public int newQuota = 0;
     [SerializeField] float difficultyMultiplier = 0.25f;
 
     [Header("UI References")]
@@ -93,7 +94,7 @@ public class ShiftManager : MonoBehaviour
 
         orderManager.StopOrders();
 
-        if (orderManager.dayEarnings >= orderQuota)
+        if (orderManager.dayEarnings >= newQuota)
         {
             Debug.Log("All Orders Fullfilled. Shift Complete.");
             StartNightShift();
@@ -143,7 +144,12 @@ public class ShiftManager : MonoBehaviour
         dayCount++;
         orderManager.dayEarnings = 0;
 
-        orderQuota = Mathf.RoundToInt(orderQuota * difficultyMultiplier);
+        if (dayCount == 1)
+        {
+            newQuota = orderQuota;
+        }
+
+        newQuota = Mathf.RoundToInt(orderQuota * difficultyMultiplier);
 
         orderManager.completedOrders = 0;
 
