@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ShiftManager : MonoBehaviour
 {
     [Header("References")]
-    public Light mainLight;                         
+    public Light mainLight;
     public CustomerOrderManager orderManager;
     [SerializeField] GameObject nextDayButton;
     public Button nextDay;
@@ -20,12 +20,12 @@ public class ShiftManager : MonoBehaviour
     public Color nightLightColor = new Color(0.2f, 0.3f, 0.6f);
 
     [Header("Transition Settings")]
-    public float transitionDuration = 2f;           
+    public float transitionDuration = 2f;
 
     [Header("Shift Settings")]
     public bool isNight = false;
     public bool autoSwitch = false;
-    public float dayDuration = 90f;                
+    public float dayDuration = 90f;
     public float nightDuration = 90f;
 
     [Header("Day Tracker")]
@@ -41,11 +41,8 @@ public class ShiftManager : MonoBehaviour
     public int lifeCount = 3;
     private Coroutine cycleRoutine;
 
-    private void Start()
+    private void Awake()
     {
-        nextDayButton.gameObject.SetActive(true);
-        nextDay.onClick.AddListener(OnNextDayClicked);
-
         if (autoSwitch)
         {
             if (cycleRoutine != null)
@@ -53,6 +50,13 @@ public class ShiftManager : MonoBehaviour
 
             cycleRoutine = StartCoroutine(DayNightCycle());
         }
+    }
+    private void Start()
+    {
+        nextDayButton.gameObject.SetActive(true);
+        nextDay.onClick.AddListener(OnNextDayClicked);
+
+       
         UpdateUI();
     }
 
@@ -71,7 +75,7 @@ public class ShiftManager : MonoBehaviour
             nextDayClicked = false;
 
             Debug.Log($"Day {dayCount} started!");
-            StartDayShift(); 
+            StartDayShift();
 
             yield return new WaitForSeconds(dayDuration);
 
@@ -104,7 +108,7 @@ public class ShiftManager : MonoBehaviour
                 Debug.Log("No more chances left. Game Over!");
                 if (cycleRoutine != null)
                     StopCoroutine(cycleRoutine);
-                
+
                 return;
             }
             else
