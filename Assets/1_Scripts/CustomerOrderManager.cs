@@ -128,7 +128,6 @@ public class CustomerOrderManager : MonoBehaviour
         //qtyText.text = $"{order.quantity}x {order.orderedItem.materialName}";
         orderMeter.value = 0f;
 
-        // Spawn ingredient icons (bonus tip)
         AssemblyRecipeData recipeData = FindRecipeForProduct(order.orderedItem);
 
         foreach (var ingredient in recipeData.itemDatas)
