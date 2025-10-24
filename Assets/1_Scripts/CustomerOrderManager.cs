@@ -11,7 +11,7 @@ public class CustomerOrderManager : MonoBehaviour
 
     public Transform orderUIParent;
     public GameObject orderUIPrefab;
-    public GameObject requiredItemUIPrefab; // prefab for ingredient icons (must have Image + TMP_Text)
+    public GameObject requiredItemUIPrefab;
     public float baseOrderTime = 10f;
     public float orderInterval = 5f;
     public int completedOrders = 0;
@@ -19,12 +19,8 @@ public class CustomerOrderManager : MonoBehaviour
     private bool canGenerateOrders = true;
     private Coroutine generateRoutine;
 
-    [Header("Player + Delivery")]
+    [Header("Delivery")]
     public Transform deliveryZone;
-
-    public float deliveryRadius = 2f;
-    public Transform player;
-    public Transform playerHoldPoint;
 
     [Header("Currency & Reputation")]
     public int currentReputation = 30;
@@ -34,6 +30,13 @@ public class CustomerOrderManager : MonoBehaviour
 
     private List<CustomerOrder> activeOrders = new List<CustomerOrder>();
     private Dictionary<CustomerOrder, GameObject> orderUIObjects = new Dictionary<CustomerOrder, GameObject>();
+
+    public static CustomerOrderManager Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -49,7 +52,6 @@ public class CustomerOrderManager : MonoBehaviour
             return;
 
         UpdateOrders();
-        CheckDelivery();
     }
 
     private IEnumerator GenerateOrders()
@@ -93,7 +95,7 @@ public class CustomerOrderManager : MonoBehaviour
         Debug.Log("All orders generated!");
     }
 
-    void CreateOrderUI(CustomerOrder order, CustomerData customer)
+    private void CreateOrderUI(CustomerOrder order, CustomerData customer)
     {
         Debug.Log("Generating Order UI...");
 
@@ -103,7 +105,6 @@ public class CustomerOrderManager : MonoBehaviour
         // Safely find main UI components
         Image[] allImages = ui.GetComponentsInChildren<Image>(true);
         Slider orderMeter = ui.GetComponentInChildren<Slider>(true);
-        TMP_Text qtyText = ui.GetComponentInChildren<TMP_Text>(true);
 
         // Try to detect item icon — the first Image not part of required items
         Image icon = null;
@@ -119,27 +120,23 @@ public class CustomerOrderManager : MonoBehaviour
         // Try to find ingredient parent
         Transform reqUIParent = ui.transform.Find("RecipeRequirmentUI");
 
-
-
-            icon.sprite = order.orderedItem.materialIcon;
-            //qtyText.text = $"{order.quantity}x {order.orderedItem.materialName}";
-            orderMeter.value = 0f;
+        icon.sprite = order.orderedItem.materialIcon;
+        //qtyText.text = $"{order.quantity}x {order.orderedItem.materialName}";
+        orderMeter.value = 0f;
 
         // Spawn ingredient icons (bonus tip)
         AssemblyRecipeData recipeData = FindRecipeForProduct(order.orderedItem);
-       
+
         foreach (var ingredient in recipeData.itemDatas)
         {
             GameObject reqIcon = Instantiate(requiredItemUIPrefab, reqUIParent);
             Image reqImg = reqIcon.transform.Find("RequirdItemImage").GetComponent<Image>();
             TMP_Text reqText = reqIcon.GetComponentInChildren<TMP_Text>();
 
-            
-                reqImg.sprite = ingredient.item.materialIcon;
-            
-                reqText.text = "x" + ingredient.Quantity;
+            reqImg.sprite = ingredient.item.materialIcon;
+
+            reqText.text = "x" + ingredient.Quantity;
         }
-        
 
         order.timeRemaining = order.totalTime;
         orderUIObjects.Add(order, ui);
@@ -178,28 +175,16 @@ public class CustomerOrderManager : MonoBehaviour
         }
     }
 
-    private void CheckDelivery()
+    public void CheckDelivery(GameObject item)
     {
-        float distance = Vector3.Distance(player.position, deliveryZone.position);
-        if (distance > deliveryRadius) return;
-
-        if (playerHoldPoint.childCount == 0)
-        {
-            Debug.LogWarning("No item held — cannot deliver.");
-            return;
-        }
-
-        GameObject heldItem = playerHoldPoint.GetChild(0).gameObject;
-        ItemComponent heldItemComponent = heldItem.GetComponent<ItemComponent>();
-
         foreach (CustomerOrder order in new List<CustomerOrder>(activeOrders))
         {
             if (order.isCompleted) continue;
 
-            if (order.orderedItem == heldItemComponent.itemData)
+            if (order.orderedItem.materialName == item.name)
             {
                 CompleteOrder(order);
-                Destroy(heldItem);
+                Destroy(item);
                 return;
             }
         }
@@ -244,7 +229,6 @@ public class CustomerOrderManager : MonoBehaviour
 
     private AssemblyRecipeData FindRecipeForProduct(ItemData product)
     {
-        // Looks through all customer data to find matching recipe
         foreach (CustomerData c in customers)
         {
             foreach (var recipe in c.possibleOrders)
