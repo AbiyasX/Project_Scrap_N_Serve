@@ -203,8 +203,11 @@ public class CustomerOrderManager : MonoBehaviour
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             if (order.orderedItem.materialName == item.name)
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
             if (order.orderedItem == null)
