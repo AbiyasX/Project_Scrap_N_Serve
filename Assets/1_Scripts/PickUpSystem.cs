@@ -41,7 +41,7 @@ public class PickUpSystem : MonoBehaviour
         if (grabAnim != null)
         {
             int grabLayerIndex = 1;
-            float targetWeight = isHoldingItem ? 1f : 0f; // if holding item > 1, else > 0
+            float targetWeight = isHoldingItem ? 1f : 0f;
             float currentWeight = grabAnim.GetLayerWeight(grabLayerIndex);
             float newWeight = Mathf.Lerp(currentWeight, targetWeight, Time.deltaTime * 10f);
             grabAnim.SetLayerWeight(grabLayerIndex, newWeight);

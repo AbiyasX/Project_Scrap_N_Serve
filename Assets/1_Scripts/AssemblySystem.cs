@@ -26,9 +26,7 @@ public class AssemblySystem : MonoBehaviour
 
     private void Start()
     {
-        itemLayer = LayerMask.NameToLayer(itemLayerName);
-        if (itemLayer == -1)
-            Debug.LogWarning($"⚠️ Layer '{itemLayerName}' not found!");
+        itemLayer = LayerMask.NameToLayer(itemLayerName); 
     }
 
     private static GameObject GetItemRoot(Collider other)
@@ -54,7 +52,6 @@ public class AssemblySystem : MonoBehaviour
         if (!itemsOnTable.Contains(root))
         {
             itemsOnTable.Add(root);
-            Debug.Log($"🟢 Detected {CleanName(root)} on table");
             CheckForRecipeMatch();
         }
     }
