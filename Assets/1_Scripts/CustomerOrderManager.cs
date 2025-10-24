@@ -15,6 +15,7 @@ public class CustomerOrderManager : MonoBehaviour
     public float baseOrderTime = 10f;
     public float orderInterval = 5f;
     public int completedOrders = 0;
+    [SerializeField] float delayOrder = 5f;
 
     private bool canGenerateOrders = true;
     private Coroutine generateRoutine;
@@ -71,7 +72,7 @@ public class CustomerOrderManager : MonoBehaviour
             while (!canGenerateOrders)
                 yield return null;
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(delayOrder);
 
             CustomerData customer = GetCustomerByReputation();
             if (customer == null)
