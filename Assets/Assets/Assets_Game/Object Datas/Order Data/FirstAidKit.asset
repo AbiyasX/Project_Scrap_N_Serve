@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: FirstAidKit
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   materialName: FirstAidKit
-  materialIcon: {fileID: 21300000, guid: d2c9933a2fbbfbd46946cf26b81dd57b, type: 3}
+  materialIcon: {fileID: -1090958543, guid: d2c9933a2fbbfbd46946cf26b81dd57b, type: 3}
   materialPrefab: {fileID: 8525957308551462041, guid: 712a3c54baf438d46919f73d8a0e0274, type: 3}

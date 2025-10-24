@@ -181,11 +181,37 @@ public class CustomerOrderManager : MonoBehaviour
 
     public void CheckDelivery(GameObject item)
     {
+<<<<<<< Updated upstream
+=======
+        float distance = Vector3.Distance(player.position, deliveryZone.position);
+        if (distance > deliveryRadius) return;
+
+
+        if (playerHoldPoint.childCount == 0)
+        {
+            Debug.LogWarning("No item held — cannot deliver.");
+            return;
+        }
+
+        GameObject heldItem = playerHoldPoint.GetChild(0).gameObject;
+        ItemComponent heldItemComponent = heldItem.GetComponent<ItemComponent>();
+
+>>>>>>> Stashed changes
         foreach (CustomerOrder order in new List<CustomerOrder>(activeOrders))
         {
             if (order.isCompleted) continue;
 
+<<<<<<< Updated upstream
             if (order.orderedItem.materialName == item.name)
+=======
+            if (order.orderedItem == null)
+            {
+                Debug.LogError("Order has NO orderedItem assigned!");
+                continue;
+            }
+
+            if (order.orderedItem == heldItemComponent.itemData)
+>>>>>>> Stashed changes
             {
                 CompleteOrder(order);
                 Destroy(item);

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Flashlight
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   materialName: Flashlight
-  materialIcon: {fileID: 21300000, guid: 16ce9fb9f081b0749a1d7759bd876c7d, type: 3}
+  materialIcon: {fileID: 1674581116, guid: 16ce9fb9f081b0749a1d7759bd876c7d, type: 3}
   materialPrefab: {fileID: 4936780012274252865, guid: 3a20ebd613e6ef5438f1763e948bc524, type: 3}
