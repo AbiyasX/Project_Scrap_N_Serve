@@ -24,6 +24,10 @@ public class CustomerOrderManager : MonoBehaviour
 
     [Header("Currency & Reputation")]
     public int currentReputation = 30;
+    public int dayEarnings = 0;
+
+    [Header("UI References")]
+    [SerializeField] TMP_Text dayEarningText;
 
     public CurrencyManager currencyManager;
     public ShiftManager shiftManager;
@@ -56,7 +60,7 @@ public class CustomerOrderManager : MonoBehaviour
 
     private IEnumerator GenerateOrders()
     {
-        for (int i = 0; i < shiftManager.orderQuota; i++)
+        while (!shiftManager.isNight)
         {
             if (shiftManager.isNight)
             {
@@ -196,6 +200,11 @@ public class CustomerOrderManager : MonoBehaviour
     {
         order.isCompleted = true;
         currencyManager.AddMoney(order.payment);
+
+        dayEarnings += order.payment;
+        if (dayEarningText != null)
+            dayEarningText.text = $"Day Earnings: {dayEarnings}";
+
         currentReputation += 3;
         completedOrders++;
 

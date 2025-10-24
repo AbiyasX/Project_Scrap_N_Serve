@@ -1,12 +1,17 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
+using UnityEngine.UI;
 
 public class ShiftManager : MonoBehaviour
 {
     [Header("References")]
     public Light mainLight;                         
-    public CustomerOrderManager orderManager;       
+    public CustomerOrderManager orderManager;
+    [SerializeField] GameObject nextDayButton;
+    public Button nextDay;
+    private bool nextDayClicked = false;
+
 
     [Header("Day/Night Settings")]
     public float dayLightIntensity = 1.2f;
@@ -25,19 +30,22 @@ public class ShiftManager : MonoBehaviour
 
     [Header("Day Tracker")]
     public int dayCount = 1;
-    public int orderQuota = 5;
-    private int maxQuota = 10;
-    //[SerializeField] float difficultyMultiplier = 0.2f;
+    public int orderQuota = 30;
+    [SerializeField] float difficultyMultiplier = 0.25f;
 
     [Header("UI References")]
     [SerializeField] TMP_Text dayCountText;
     [SerializeField] TMP_Text lifeCountText;
+    [SerializeField] TMP_Text orderQuotaText;
 
     public int lifeCount = 3;
     private Coroutine cycleRoutine;
 
     private void Start()
     {
+        nextDayButton.gameObject.SetActive(true);
+        nextDay.onClick.AddListener(OnNextDayClicked);
+
         if (autoSwitch)
         {
             if (cycleRoutine != null)
@@ -48,16 +56,26 @@ public class ShiftManager : MonoBehaviour
         UpdateUI();
     }
 
+    private void OnNextDayClicked()
+    {
+        nextDayClicked = true;
+    }
+
     private IEnumerator DayNightCycle()
     {
         while (true)
         {
-            yield return new WaitForSeconds(dayDuration);
-            CheckQuota();
+            StartNightShift();
+            yield return new WaitUntil(() => nextDayClicked);
 
-            yield return new WaitForSeconds(nightDuration);
-            StartDayShift();
-            //or can click a button to proceed to next Day
+            nextDayClicked = false;
+
+            Debug.Log($"Day {dayCount} started!");
+            StartDayShift(); 
+
+            yield return new WaitForSeconds(dayDuration);
+
+            CheckQuota();
         }
     }
 
@@ -71,7 +89,7 @@ public class ShiftManager : MonoBehaviour
 
         orderManager.StopOrders();
 
-        if (orderManager.completedOrders >= orderQuota)
+        if (orderManager.dayEarnings >= orderQuota)
         {
             Debug.Log("All Orders Fullfilled. Shift Complete.");
             StartNightShift();
@@ -100,19 +118,28 @@ public class ShiftManager : MonoBehaviour
     {
         Debug.Log("Night shift started — orders paused!");
 
+        StartCoroutine(ChangeLighting(nightLightColor, nightLightIntensity));
+
         if (isNight) return;
         isNight = true;
 
-        StartCoroutine(ChangeLighting(nightLightColor, nightLightIntensity));
+        nextDayButton.gameObject.SetActive(true);
     }
 
     public void StartDayShift()
     {
+
+        StartCoroutine(ChangeLighting(dayLightColor, dayLightIntensity));
+
         if (!isNight) return;
         isNight = false;
 
+        nextDayButton.gameObject.SetActive(false);
+
         dayCount++;
-        orderQuota = Mathf.Min(orderQuota + 1, maxQuota);
+        orderManager.dayEarnings = 0;
+
+        orderQuota = Mathf.RoundToInt(orderQuota * difficultyMultiplier);
 
         orderManager.completedOrders = 0;
 
@@ -121,13 +148,17 @@ public class ShiftManager : MonoBehaviour
         Debug.Log("Day shift started — orders resumed!");
         if (orderManager != null)
             orderManager.ResumeOrders();
-
-        StartCoroutine(ChangeLighting(dayLightColor, dayLightIntensity));
     }
 
     private IEnumerator ChangeLighting(Color targetColor, float targetIntensity)
     {
-        if (mainLight == null) yield break;
+        Debug.Log("Changing Lighting....");
+
+        if (mainLight == null)
+        {
+            Debug.LogError("Main Light not assigned!");
+            yield break;
+        }
 
         float startIntensity = mainLight.intensity;
         Color startColor = mainLight.color;
@@ -140,6 +171,8 @@ public class ShiftManager : MonoBehaviour
             mainLight.color = Color.Lerp(startColor, targetColor, t);
             yield return null;
         }
+
+        Debug.Log("[Lighting] Transition complete!");
     }
 
     private void UpdateUI()
@@ -148,6 +181,8 @@ public class ShiftManager : MonoBehaviour
             dayCountText.text = $"Day: {dayCount}";
         if (lifeCountText != null)
             lifeCountText.text = $"Lives: {lifeCount}";
+        if (orderQuotaText != null)
+            orderQuotaText.text = $"Quota: {orderQuota}";
     }
 
 }
