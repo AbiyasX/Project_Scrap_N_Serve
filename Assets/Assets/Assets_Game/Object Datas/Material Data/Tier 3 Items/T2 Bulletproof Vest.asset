@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8f5d7d226b4694ab4d8780229315ec, type: 3}
   m_Name: T2 Bulletproof Vest
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  materialName: BulletproofVest
+  materialName: Bulletproof Vest
   materialIcon: {fileID: -965879935, guid: 01f91335d33d07f45a39069cb48608a8, type: 3}
   materialPrefab: {fileID: 5686602995366979373, guid: 258c163a19acafe4a85301a281db78d6, type: 3}

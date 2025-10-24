@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8f5d7d226b4694ab4d8780229315ec, type: 3}
   m_Name: T3 Night Vision
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  materialName: NightVision
+  materialName: Night Vision
   materialIcon: {fileID: 21300000, guid: 011e1b56b8c74f14a83e5ddfeab093ef, type: 3}
   materialPrefab: {fileID: 8126771270420267901, guid: b2c1fc24930d8a04c8a83657f1c447bf, type: 3}

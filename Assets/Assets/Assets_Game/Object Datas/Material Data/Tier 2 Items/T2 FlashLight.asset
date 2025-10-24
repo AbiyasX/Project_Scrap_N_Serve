@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8f5d7d226b4694ab4d8780229315ec, type: 3}
   m_Name: T2 FlashLight
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  materialName: FlashLight
+  materialName: Flashlight
   materialIcon: {fileID: 1674581116, guid: 16ce9fb9f081b0749a1d7759bd876c7d, type: 3}
   materialPrefab: {fileID: 6793921915199317398, guid: 10db1506222db6b4eb50c163408854a3, type: 3}

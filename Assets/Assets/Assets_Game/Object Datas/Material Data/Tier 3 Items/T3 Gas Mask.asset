@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8f5d7d226b4694ab4d8780229315ec, type: 3}
   m_Name: T3 Gas Mask
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  materialName: GasMask
+  materialName: Gas Mask
   materialIcon: {fileID: 21300000, guid: 96a3d74a978a23944af47af7155704b4, type: 3}
   materialPrefab: {fileID: 4323992896150456572, guid: 948cee5033363c741a89cf65c9323569, type: 3}

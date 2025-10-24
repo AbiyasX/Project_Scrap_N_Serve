@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8f5d7d226b4694ab4d8780229315ec, type: 3}
   m_Name: Plastic Sheet
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  materialName: PlasticSheet
+  materialName: Plastic Sheet
   materialIcon: {fileID: 2119305232, guid: 935e0dedac383f447a517dd81843bd52, type: 3}
   materialPrefab: {fileID: 3554616246281269355, guid: 6b226863871461f45a7946506ab589e9, type: 3}

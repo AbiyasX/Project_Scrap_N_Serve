@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8f5d7d226b4694ab4d8780229315ec, type: 3}
   m_Name: T2 FirstAid
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  materialName: FirstAid
+  materialName: First Aid
   materialIcon: {fileID: -1090958543, guid: d2c9933a2fbbfbd46946cf26b81dd57b, type: 3}
   materialPrefab: {fileID: 8607821665896365162, guid: ad129dbc1c32f214daa1a0ac8ee66fcd, type: 3}

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8f5d7d226b4694ab4d8780229315ec, type: 3}
   m_Name: T3 Armor
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  materialName: T3 Armor
+  materialName: Armor
   materialIcon: {fileID: 21300000, guid: 294505c3eee9212409faf12156ce8942, type: 3}
   materialPrefab: {fileID: 4179033339223795406, guid: 7f9a85e7a4e638c4d855f1b4fecf64bc, type: 3}

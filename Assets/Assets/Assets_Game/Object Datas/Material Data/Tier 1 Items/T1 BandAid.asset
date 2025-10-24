@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8f5d7d226b4694ab4d8780229315ec, type: 3}
   m_Name: T1 BandAid
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  materialName: BandAid
+  materialName: Band Aid
   materialIcon: {fileID: 21300000, guid: 0ab3ce4420e4e6a4c87982198763ba07, type: 3}
   materialPrefab: {fileID: 899445933817974364, guid: e55c71b13450ce0408c70869c6d758f3, type: 3}
