@@ -202,8 +202,11 @@ public class CustomerOrderManager : MonoBehaviour
             if (order.isCompleted) continue;
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             if (order.orderedItem.materialName == item.name)
 =======
+=======
+>>>>>>> Stashed changes
             if (order.orderedItem == null)
             {
                 Debug.LogError("Order has NO orderedItem assigned!");

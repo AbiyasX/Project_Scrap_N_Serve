@@ -120,12 +120,18 @@ NavMeshSettings:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 --- !u!4 &445238 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9032380565841640802, guid: d105265f2be9700488263eecc153dea3, type: 3}
   m_PrefabInstance: {fileID: 6599818024812091566}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!1 &13649627
 GameObject:
@@ -868,6 +874,7 @@ CanvasRenderer:
   m_GameObject: {fileID: 147673512}
   m_CullTransparentMesh: 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1 &152800903
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,6 +1008,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 152800903}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 --- !u!1 &177439995
@@ -1607,9 +1616,12 @@ RectTransform:
   - {fileID: 1579751577}
   - {fileID: 1184729559}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   - {fileID: 1315852775}
   - {fileID: 1520208512}
   - {fileID: 1842807969}
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   m_Father: {fileID: 1174923904}
@@ -1890,6 +1902,7 @@ GameObject:
   m_PrefabInstance: {fileID: 1060759458}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1 &526468128
 GameObject:
   m_ObjectHideFlags: 0
@@ -2026,6 +2039,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526468128}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 --- !u!1 &588522001
@@ -2708,12 +2723,18 @@ PrefabInstance:
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac95b9385c09a9147acb9f4bb74f76f4, type: 3}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 --- !u!4 &1051428269 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1017939955557261141, guid: d105265f2be9700488263eecc153dea3, type: 3}
   m_PrefabInstance: {fileID: 6599818024812091566}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!1001 &1055988834
 PrefabInstance:
@@ -2985,14 +3006,20 @@ MonoBehaviour:
   completedOrders: 0
   deliveryZone: {fileID: 221408623}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   currentReputation: 30
   dayEarnings: 0
   dayEarningText: {fileID: 1315852776}
 =======
+=======
+>>>>>>> Stashed changes
   deliveryRadius: 2
   player: {fileID: 1051428269}
   playerHoldPoint: {fileID: 445238}
   currentReputation: 30
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   currencyManager: {fileID: 1174923906}
   shiftManager: {fileID: 1174923909}
@@ -3011,6 +3038,7 @@ MonoBehaviour:
   mainLight: {fileID: 410087040}
   orderManager: {fileID: 1174923908}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   nextDayButton: {fileID: 1842807968}
   nextDay: {fileID: 152800905}
   dayLightIntensity: 1.5
@@ -3020,23 +3048,34 @@ MonoBehaviour:
   transitionDuration: 2
   isNight: 1
 =======
+=======
+>>>>>>> Stashed changes
   dayLightIntensity: 1.2
   nightLightIntensity: 0.1
   dayLightColor: {r: 1, g: 1, b: 1, a: 1}
   nightLightColor: {r: 0.2, g: 0.3, b: 0.6, a: 1}
   transitionDuration: 2
   isNight: 0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   autoSwitch: 1
   dayDuration: 120
   nightDuration: 30
   dayCount: 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   orderQuota: 30
   difficultyMultiplier: 0.25
   dayCountText: {fileID: 1579751578}
   lifeCountText: {fileID: 1184729560}
   orderQuotaText: {fileID: 1520208513}
+=======
+  orderQuota: 5
+  dayCountText: {fileID: 1579751578}
+  lifeCountText: {fileID: 1184729560}
+>>>>>>> Stashed changes
 =======
   orderQuota: 5
   dayCountText: {fileID: 1579751578}
@@ -3187,6 +3226,7 @@ GameObject:
   m_PrefabInstance: {fileID: 1868232477}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1 &1315852774
 GameObject:
   m_ObjectHideFlags: 0
@@ -3323,6 +3363,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1315852774}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 --- !u!1 &1336010851
@@ -3789,6 +3831,7 @@ MonoBehaviour:
   m_Constraint: 0
   m_ConstraintCount: 2
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1 &1520208511
 GameObject:
   m_ObjectHideFlags: 0
@@ -3925,6 +3968,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1520208511}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 --- !u!1 &1531507992
@@ -4474,6 +4519,7 @@ Transform:
   m_PrefabInstance: {fileID: 1806161451}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1 &1842807968
 GameObject:
   m_ObjectHideFlags: 0
@@ -4510,6 +4556,8 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 --- !u!1 &1846839957
