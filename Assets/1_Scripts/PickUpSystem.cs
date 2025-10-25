@@ -48,7 +48,7 @@ public class PickUpSystem : MonoBehaviour
         }
     }
 
-    private void DetectItem()
+    public void DetectItem()
     {
         Collider[] hits = Physics.OverlapSphere(transform.position + transform.forward * pickupRange * 0.5f, sphereRadius, itemLayer);
 
@@ -75,9 +75,33 @@ public class PickUpSystem : MonoBehaviour
         }
     }
 
+    public void ForcePickUp(GameObject item)
+    {
+        if (item == null) return;
+        if (isHoldingItem) return;
+        
+        Rigidbody rb = item.GetComponent<Rigidbody>();
+        if (rb)
+        {
+            rb.isKinematic = true;
+            rb.useGravity = false;
+        }
+
+        MeshCollider meshCol = item.GetComponent<MeshCollider>();
+        if (meshCol)
+            meshCol.enabled = false;
+
+        item.transform.SetParent(itemHolder);
+        item.transform.localPosition = Vector3.zero;
+        item.transform.localRotation = Quaternion.identity;
+        heldItem = item;
+        isHoldingItem = true;
+    }
+
     public void PickUpItem()
     {
         if (currentItem == null) return;
+        if (isHoldingItem) return;
         AssemblySystem.Instance.RemoveItemManually(currentItem);
         Rigidbody rb = currentItem.GetComponent<Rigidbody>();
         if (rb)
@@ -92,7 +116,7 @@ public class PickUpSystem : MonoBehaviour
         currentItem.transform.SetParent(itemHolder);
         currentItem.transform.localPosition = Vector3.zero;
         currentItem.transform.localRotation = Quaternion.identity;
-        
+   
         heldItem = currentItem;
         currentItem = null;
         isHoldingItem = true;

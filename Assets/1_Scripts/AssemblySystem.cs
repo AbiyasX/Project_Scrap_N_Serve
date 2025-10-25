@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AssemblySystem : MonoBehaviour
 {
-    public static AssemblySystem Instance { get; private set; }
+    public static AssemblySystem Instance; 
 
     [Header("Recipes")]
     public AssemblyRecipeData[] productRecipes;
@@ -14,8 +14,8 @@ public class AssemblySystem : MonoBehaviour
 
     [Header("Detection Settings")]
     public string itemLayerName = "Item";
-
-    private readonly List<GameObject> itemsOnTable = new List<GameObject>();
+    [SerializeField]
+    private List<GameObject> itemsOnTable = new List<GameObject>();
     private int itemLayer;
 
     private void Awake()
