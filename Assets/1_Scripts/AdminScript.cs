@@ -153,4 +153,22 @@ public class AdminScript : MonoBehaviour
         item.transform.SetParent(null);
         pickup.ForcePickUp(item);
     }
+    [FoldoutGroup("Item Command")]
+    [Button(ButtonSizes.Large)]
+    private void ClearAllItems()
+    {       
+        int itemLayer = LayerMask.NameToLayer("Item");
+        
+        var allObjects = FindObjectsByType<GameObject>(FindObjectsSortMode.None);
+        int count = 0;
+
+        foreach (var obj in allObjects)
+        {
+            if (obj.layer == itemLayer)
+            {
+                Destroy(obj);
+                count++;
+            }
+        }    
+    }
 }
