@@ -112,7 +112,7 @@ public class AdminScript : MonoBehaviour
     public enum ItemCategory { ProcessedMaterials, RawMaterials, Tier1Items, Tier2Items, Tier3Items }
     [FoldoutGroup("Item Command")]
     public ItemCategory category;
-    [FoldoutGroup("Item Command", expanded: false)]
+    [FoldoutGroup("Item Command", expanded: true)]
     [FoldoutGroup("Item Command")]
     [ValueDropdown(nameof(GetItemList))]
     public ItemData itemName;
@@ -149,7 +149,7 @@ public class AdminScript : MonoBehaviour
     private void spawnItem()
     {
         GameObject item = Instantiate(itemName.materialPrefab, itemspawnPos);
-        item.name = itemName.name;
+        item.name = itemName.materialName;
         item.transform.SetParent(null);
         pickup.ForcePickUp(item);
     }

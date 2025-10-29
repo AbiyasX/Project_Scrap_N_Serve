@@ -3,7 +3,27 @@ guid: 87d7a3afdf24fb1419f5ad34b93c94ff
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Black
+    second: {fileID: 2100000, guid: 7d0a05d1320415047959522d568116b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ConstFloor
+    second: {fileID: 2100000, guid: 73e7a2d8741c9c147bb3d87abf14b4b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Construction_Brown
+    second: {fileID: 2100000, guid: 08cc94d29fa61c74a94672cd8889fa91, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Player_Grey
+    second: {fileID: 2100000, guid: a4ba59ce8f3a50149a5318b51a833204, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

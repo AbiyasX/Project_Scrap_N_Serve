@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
+
+public interface IPickUp
+{
+    void Pickup();
+}
 
 public class PickUpSystem : MonoBehaviour
 {
@@ -80,6 +86,7 @@ public class PickUpSystem : MonoBehaviour
         if (item == null) return;
         if (isHoldingItem) return;
         
+        
         Rigidbody rb = item.GetComponent<Rigidbody>();
         if (rb)
         {
@@ -104,6 +111,17 @@ public class PickUpSystem : MonoBehaviour
         if (isHoldingItem) return;
         AssemblySystem.Instance.RemoveItemManually(currentItem);
         Rigidbody rb = currentItem.GetComponent<Rigidbody>();
+
+        TableScript[] allTables = FindObjectsByType<TableScript>(FindObjectsSortMode.None);
+        foreach (TableScript table in allTables)
+        {
+            if (table != null && table.GetItemOnTable() == currentItem)
+            {
+                table.Pickup();
+                break;
+            }
+        }
+
         if (rb)
         {
             rb.isKinematic = true;

@@ -16,16 +16,12 @@ public class OrderMaterialSystem : MonoBehaviour, Iinteract
     [SerializeField] private GameObject materialButtonPrefab;
     [SerializeField] private Transform OrderQueueUI;
     [SerializeField] private GameObject ItemQueueUI;
-
+    [SerializeField] private GameObject orderHighLight;
     [SerializeField] private float timer;
 
-    private Renderer[] renderers;
     private HashSet<ItemData> addedMaterials = new HashSet<ItemData>();
 
-    private void Start()
-    {
-        renderers = GetComponentsInChildren<Renderer>();
-    }
+   
 
     public void Interact()
     {
@@ -105,8 +101,7 @@ public class OrderMaterialSystem : MonoBehaviour, Iinteract
     {
         if (other.CompareTag("Player"))
         {
-            foreach (var mat in renderers)
-                mat.material.EnableKeyword("_EMISSION");
+            orderHighLight.SetActive(true);
         }
     }
 
@@ -115,8 +110,8 @@ public class OrderMaterialSystem : MonoBehaviour, Iinteract
         if (other.CompareTag("Player"))
         {
             orderUI.SetActive(false);
-            foreach (var mat in renderers)
-                mat.material.DisableKeyword("_EMISSION");
+            orderHighLight.SetActive(false);
+
         }
     }
 }

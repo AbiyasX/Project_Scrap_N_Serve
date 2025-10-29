@@ -7,7 +7,7 @@ public class WorkstationSlotScript : MonoBehaviour, Iinteract
     [SerializeField] private GameObject buyTextUI;
 
     private bool playerNearby = false;
-    [SerializeField] private Renderer[] rend;
+    [SerializeField] GameObject highlightBox;
     private bool purchased = false;
     [SerializeField] private WorkstationShopManager workstationShopManager;
     [SerializeField] GameObject EmptySlotOBJ;
@@ -16,7 +16,8 @@ public class WorkstationSlotScript : MonoBehaviour, Iinteract
     private Coroutine timerRoutine;
     private void Awake()
     {
-        rend = GetComponents<Renderer>();
+        workstationShopManager = FindAnyObjectByType<WorkstationShopManager>(FindObjectsInactive.Include);
+
         if (buyTextUI != null)
             buyTextUI.SetActive(false);
     }
@@ -34,12 +35,7 @@ public class WorkstationSlotScript : MonoBehaviour, Iinteract
         if (other.CompareTag("Player"))
         {
             playerNearby = true;
-
-            foreach (var obj in rend)
-            {
-                obj.material.EnableKeyword("_EMISSION");
-                obj.material.SetColor("_EmissionColor", Color.white * 0.05f);
-            }
+            highlightBox.SetActive(true);
 
             if (!purchased)
             {
@@ -54,11 +50,10 @@ public class WorkstationSlotScript : MonoBehaviour, Iinteract
         {
             playerNearby = false;
             buyTextUI.SetActive(false);
+            highlightBox.SetActive(false);
             workstationShopManager.CloseShop();
-            foreach (var obj in rend)
-            {
-                obj.material.DisableKeyword("_EMISSION");
-            }
+            
+
         }
     }
 

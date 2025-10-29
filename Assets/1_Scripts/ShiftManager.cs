@@ -39,6 +39,8 @@ public class ShiftManager : MonoBehaviour
     [SerializeField] TMP_Text lifeCountText;
     [SerializeField] TMP_Text orderQuotaText;
 
+    PlayerControls playerControls;
+
     public int lifeCount = 3;
     private Coroutine cycleRoutine;
 
@@ -52,13 +54,21 @@ public class ShiftManager : MonoBehaviour
             cycleRoutine = StartCoroutine(DayNightCycle());
         }
     }
+
     private void Start()
     {
+        playerControls = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>();
+
         nextDayButton.gameObject.SetActive(true);
         nextDay.onClick.AddListener(OnNextDayClicked);
 
        
         UpdateUI();
+    }
+
+    private void Update()
+    {
+        playerControls.flashLight(isNight);
     }
 
     private void OnNextDayClicked()
@@ -127,7 +137,7 @@ public class ShiftManager : MonoBehaviour
 
         if (isNight) return;
         isNight = true;
-
+       
         nextDayButton.gameObject.SetActive(true);
     }
 

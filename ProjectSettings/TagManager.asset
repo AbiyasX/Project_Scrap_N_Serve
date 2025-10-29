@@ -7,6 +7,7 @@ TagManager:
   - Facility
   - Ground
   - Processed
+  - Blueprint
   layers:
   - Default
   - TransparentFX

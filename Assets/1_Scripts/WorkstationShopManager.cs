@@ -14,8 +14,12 @@ public class WorkstationShopManager : MonoBehaviour
     public CurrencyManager currencyManager;
     private WorkstationSlotScript currentWorkshopSlot;
 
+    public static WorkstationShopManager instance;
+
     private void Awake()
-    {
+    {    
+        instance = this;
+
         foreach (var workstation in workstations) 
         {
             workstation.isPurchased = false;

@@ -22,6 +22,9 @@ public class PlayerControls : MonoBehaviour
     bool isDashing = false;
     [Header("Interaction")]
     [SerializeField] private float rayHeight = 1.5f;
+    [Header("VFX Particle")]
+    [SerializeField] ParticleSystem walkVFX;
+    [SerializeField] GameObject prefabFlashLight;
 
 
     private PickUpSystem interactObj;
@@ -139,10 +142,12 @@ public class PlayerControls : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
             playerAnim.SetBool("IsWalking", true);
+            walkVFX.Play();
         }
         else
         {
             playerAnim.SetBool("IsWalking", false);
+            walkVFX.Stop();
         }
 
     }
@@ -170,5 +175,10 @@ public class PlayerControls : MonoBehaviour
 
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
+    }
+
+    public void flashLight(bool isActive)
+    {
+        prefabFlashLight.SetActive(isActive);
     }
 }
