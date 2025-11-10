@@ -50,6 +50,6 @@ public class CurrencyManager : MonoBehaviour
 
     private void UpdateCurrencyUI()
     {
-        cogsUIText.text = "Cogs: " + Cog_currentCurrency.ToString("N0");
+        cogsUIText.text = "" + Cog_currentCurrency.ToString("N0");
     }
 }

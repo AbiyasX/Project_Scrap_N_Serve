@@ -11,6 +11,7 @@ public class ShiftManager : MonoBehaviour
     [SerializeField] GameObject nextDayButton;
     public Button nextDay;
     private bool nextDayClicked = false;
+    [SerializeField] private Image timeFillImage;
 
 
     [Header("Day/Night Settings")]
@@ -36,13 +37,16 @@ public class ShiftManager : MonoBehaviour
 
     [Header("UI References")]
     [SerializeField] TMP_Text dayCountText;
-    [SerializeField] TMP_Text lifeCountText;
     [SerializeField] TMP_Text orderQuotaText;
 
     PlayerControls playerControls;
 
-    public int lifeCount = 3;
+    public int lifeCount;
+    public int maxLife = 3;
+    public Image[] lifeIcons;
+
     private Coroutine cycleRoutine;
+    private Coroutine dayTimerRoutine;
 
     private void Awake()
     {
@@ -62,6 +66,7 @@ public class ShiftManager : MonoBehaviour
         nextDayButton.gameObject.SetActive(true);
         nextDay.onClick.AddListener(OnNextDayClicked);
 
+        lifeCount = maxLife;
        
         UpdateUI();
     }
@@ -139,6 +144,12 @@ public class ShiftManager : MonoBehaviour
         isNight = true;
        
         nextDayButton.gameObject.SetActive(true);
+
+        if (dayTimerRoutine != null)
+        {
+            StopCoroutine(dayTimerRoutine);
+            timeFillImage.fillAmount = 0f;
+        }
     }
 
     public void StartDayShift()
@@ -168,6 +179,10 @@ public class ShiftManager : MonoBehaviour
         Debug.Log("Day shift started — orders resumed!");
         if (orderManager != null)
             orderManager.ResumeOrders();
+
+        if(dayTimerRoutine != null)
+            StopCoroutine(dayTimerRoutine);
+        dayTimerRoutine = StartCoroutine(UpdateUITimer());
     }
 
     private IEnumerator ChangeLighting(Color targetColor, float targetIntensity)
@@ -199,10 +214,35 @@ public class ShiftManager : MonoBehaviour
     {
         if (dayCountText != null)
             dayCountText.text = $"Day: {dayCount}";
-        if (lifeCountText != null)
-            lifeCountText.text = $"Lives: {lifeCount}";
         if (orderQuotaText != null)
             orderQuotaText.text = $"Quota: {orderQuota}";
+
+        for (int i = 0; i < lifeIcons.Length; i++)
+        {
+            if (i < lifeCount)
+                lifeIcons[i].enabled = true;
+            else
+                lifeIcons[i].enabled = false;
+        }
     }
 
+    private IEnumerator UpdateUITimer()
+    {
+        if (timeFillImage == null)
+            yield break;
+
+        timeFillImage.fillAmount = 0f; 
+
+        float elapsed = 0f;
+
+        while (elapsed < dayDuration)
+        {
+            elapsed += Time.deltaTime;
+            float progress = Mathf.Clamp01(elapsed / dayDuration);
+            timeFillImage.fillAmount = progress;
+            yield return null;
+        }
+
+        timeFillImage.fillAmount = 1f; 
+    }
 }
