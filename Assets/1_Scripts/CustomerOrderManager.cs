@@ -24,7 +24,8 @@ public class CustomerOrderManager : MonoBehaviour
     public Transform deliveryZone;
 
     [Header("Currency & Reputation")]
-    public int currentReputation = 30;
+    public int currentReputation;
+    [SerializeField] private Image repFillImage;
     public int dayEarnings = 0;
 
     [Header("UI References")]
@@ -45,6 +46,9 @@ public class CustomerOrderManager : MonoBehaviour
 
     private void Start()
     {
+        currentReputation = 30;
+        UpdateReputationUI();
+
         if (shiftManager != null && !shiftManager.isNight)
         {
             generateRoutine = StartCoroutine(GenerateOrders());
@@ -210,6 +214,8 @@ public class CustomerOrderManager : MonoBehaviour
         currentReputation += 3;
         completedOrders++;
 
+        UpdateReputationUI();
+
         Destroy(orderUIObjects[order]);
         orderUIObjects.Remove(order);
         activeOrders.Remove(order);
@@ -220,6 +226,8 @@ public class CustomerOrderManager : MonoBehaviour
     private void FailOrder(CustomerOrder order)
     {
         currentReputation -= 5;
+        UpdateReputationUI();
+
         Destroy(orderUIObjects[order]);
         orderUIObjects.Remove(order);
         activeOrders.Remove(order);
@@ -237,6 +245,23 @@ public class CustomerOrderManager : MonoBehaviour
         if (possible.Count == 0) return null;
         return possible[Random.Range(0, possible.Count)];
     }
+
+    private void UpdateReputationUI()
+    {
+        if (repFillImage == null)
+            return;
+
+        float maxReputation = 100f;
+        float minReputation = 0f;
+
+        float clampedRep = Mathf.Clamp(currentReputation, minReputation, maxReputation);
+
+        float fillValue = clampedRep / maxReputation;
+
+        repFillImage.fillAmount = fillValue;
+
+    }
+
 
     private AssemblyRecipeData FindRecipeForProduct(ItemData product)
     {
