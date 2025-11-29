@@ -50,7 +50,6 @@ public class PlayerControls : MonoBehaviour
         // pick up
         inputActions.Player.PickUp.performed += PickUp_performed;
         // Dash
-        inputActions.Player.Dash.performed += Dash_performed;
     }
 
     
@@ -67,7 +66,6 @@ public class PlayerControls : MonoBehaviour
         // pick up
         inputActions.Player.PickUp.performed -= PickUp_performed;
         // dash
-        inputActions.Player.Dash.performed -= Dash_performed;
         inputActions.Player.Disable();
     }
 
@@ -96,11 +94,6 @@ public class PlayerControls : MonoBehaviour
 
         Gizmos.color = new Color(0, 1, 0, 0.3f);
         Gizmos.DrawWireSphere(center, interactRadius);
-    }
-
-    private void Dash_performed(InputAction.CallbackContext obj)
-    {
-        player_dash();
     }
 
     private void PickUp_performed(InputAction.CallbackContext obj)
@@ -150,31 +143,6 @@ public class PlayerControls : MonoBehaviour
             walkVFX.Stop();
         }
 
-    }
-
-    private void player_dash()
-    {
-        if (!canDash || isDashing) return;
-        StartCoroutine(DashCoroutine());
-    }
-
-    private IEnumerator DashCoroutine()
-    {
-        canDash = false;
-        isDashing = true;
-
-        float startTime = Time.time;
-
-        while (Time.time < startTime + dashDuration)
-        {
-            transform.Translate(transform.forward * dashForce * Time.deltaTime, Space.World);
-            yield return null;
-        }
-
-        isDashing = false;
-
-        yield return new WaitForSeconds(dashCooldown);
-        canDash = true;
     }
 
     public void flashLight(bool isActive)

@@ -107,7 +107,7 @@ public class MainMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                   {
                       fadeOut.SetActive(true);
                       Debug.Log("Play button clicked! Loading Scene...");
-                      SceneManager.LoadScene("Dan_Testing");
+                      SceneManager.LoadScene("ScrapNServe");
                   });
     }
 

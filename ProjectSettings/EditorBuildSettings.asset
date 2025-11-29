@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/WorkScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
+    path: Assets/Scenes/ScrapNServe.unity
+    guid: 9a95d8c3f5ef4b94ba63b34adca8c150
+  - enabled: 0
     path: Assets/Scenes/Dan_Testing/Dan_Testing.unity
     guid: e6cd351eae85db94dac17ff609bd5857
   m_configObjects:

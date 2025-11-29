@@ -8,7 +8,7 @@ public class ShiftManager : MonoBehaviour
     [Header("References")]
     public Light mainLight;
     public CustomerOrderManager orderManager;
-    [SerializeField] GameObject nextDayButton;
+    [SerializeField] GameObject SurfaceLadder;
     public Button nextDay;
     private bool nextDayClicked = false;
     [SerializeField] private Image timeFillImage;
@@ -63,7 +63,7 @@ public class ShiftManager : MonoBehaviour
     {
         playerControls = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>();
 
-        nextDayButton.gameObject.SetActive(true);
+        //nextDayButton.gameObject.SetActive(true);
         nextDay.onClick.AddListener(OnNextDayClicked);
 
         lifeCount = maxLife;
@@ -142,8 +142,7 @@ public class ShiftManager : MonoBehaviour
 
         if (isNight) return;
         isNight = true;
-       
-        nextDayButton.gameObject.SetActive(true);
+        SurfaceLadder.gameObject.SetActive(true);
 
         if (dayTimerRoutine != null)
         {
@@ -160,7 +159,7 @@ public class ShiftManager : MonoBehaviour
         if (!isNight) return;
         isNight = false;
 
-        nextDayButton.gameObject.SetActive(false);
+        SurfaceLadder.gameObject.SetActive(false);
 
         dayCount++;
         orderManager.dayEarnings = 0;
