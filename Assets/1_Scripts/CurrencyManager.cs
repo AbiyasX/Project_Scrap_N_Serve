@@ -1,10 +1,12 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class CurrencyManager : MonoBehaviour
 {
-    [SerializeField] private float Cog_currentCurrency;
+    public float Cog_currentCurrency;
     [SerializeField] private TextMeshProUGUI cogsUIText;
+    [SerializeField] Animator cogAnim;
 
     public static CurrencyManager instance;
     private void Awake()
@@ -50,6 +52,9 @@ public class CurrencyManager : MonoBehaviour
 
     private void UpdateCurrencyUI()
     {
+        cogAnim.Play("CogAnim", 0 , 0f);
         cogsUIText.text = "" + Cog_currentCurrency.ToString("N0");
+       
     }
+   
 }

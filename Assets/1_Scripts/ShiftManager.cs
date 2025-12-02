@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
+
 
 public class ShiftManager : MonoBehaviour
 {
@@ -12,7 +14,8 @@ public class ShiftManager : MonoBehaviour
     public Button nextDay;
     private bool nextDayClicked = false;
     [SerializeField] private Image timeFillImage;
-
+    [SerializeField] Animator stopWatchAnim;
+    [SerializeField] private GameObject gameOverPanel;
 
     [Header("Day/Night Settings")]
     public float dayLightIntensity = 1.2f;
@@ -68,6 +71,8 @@ public class ShiftManager : MonoBehaviour
 
         lifeCount = maxLife;
        
+        gameOverPanel.SetActive(false);
+
         UpdateUI();
     }
 
@@ -124,6 +129,7 @@ public class ShiftManager : MonoBehaviour
                 Debug.Log("No more chances left. Game Over!");
                 if (cycleRoutine != null)
                     StopCoroutine(cycleRoutine);
+                gameOverPanel.SetActive(true);
 
                 return;
             }
@@ -218,11 +224,28 @@ public class ShiftManager : MonoBehaviour
 
         for (int i = 0; i < lifeIcons.Length; i++)
         {
-            if (i < lifeCount)
-                lifeIcons[i].enabled = true;
+            bool shouldBeEnabled = i < lifeCount;
+
+            // If the icon is currently enabled but needs to be disabled ? play pop animation
+            if (lifeIcons[i].enabled && !shouldBeEnabled)
+            {
+                Animator anim = lifeIcons[i].GetComponent<Animator>();
+                if (anim != null)
+                    StartCoroutine(PopAndDisable(lifeIcons[i], anim));
+            }
             else
-                lifeIcons[i].enabled = false;
+            {
+                // If icon is still part of remaining lives, keep it enabled
+                lifeIcons[i].enabled = shouldBeEnabled;
+            }
         }
+    }
+
+    private IEnumerator PopAndDisable(UnityEngine.UI.Image icon, Animator anim)
+    {
+        anim.SetTrigger("Pop");            // play pop animation
+        yield return new WaitForSeconds(3f); // wait for animation duration
+        icon.enabled = false;              // hide after popping
     }
 
     private IEnumerator UpdateUITimer()
@@ -230,18 +253,39 @@ public class ShiftManager : MonoBehaviour
         if (timeFillImage == null)
             yield break;
 
-        timeFillImage.fillAmount = 0f; 
+        timeFillImage.fillAmount = 0f;
+        timeFillImage.color = Color.green; // starting color
 
         float elapsed = 0f;
 
         while (elapsed < dayDuration)
         {
             elapsed += Time.deltaTime;
+
             float progress = Mathf.Clamp01(elapsed / dayDuration);
             timeFillImage.fillAmount = progress;
+
+            // --- COLOR CHANGE LOGIC ---
+            if (progress >= 0.5f)
+            {
+                // Normalize 0.5 ? 1.0 into 0 ? 1
+                float t = (progress - 0.5f) / 0.5f;
+
+                stopWatchAnim.ResetTrigger("Idle");
+                stopWatchAnim.SetTrigger("Blink");
+                
+
+                // Lerp from green to red
+                timeFillImage.color = Color.Lerp(Color.green, Color.red, t);
+            }
+
             yield return null;
         }
 
-        timeFillImage.fillAmount = 1f; 
+        timeFillImage.fillAmount = 1f;
+        timeFillImage.color = Color.red;
+        stopWatchAnim.ResetTrigger("Blink");
+        stopWatchAnim.SetTrigger("Idle");
     }
+
 }

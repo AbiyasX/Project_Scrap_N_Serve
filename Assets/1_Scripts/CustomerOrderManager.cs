@@ -24,6 +24,8 @@ public class CustomerOrderManager : MonoBehaviour
     public Transform deliveryZone;
 
     [Header("Currency & Reputation")]
+    public int totalOrdersFulfilled = 0;
+    public int totalOrdersFailed = 0;
     public int currentReputation;
     [SerializeField] private Image repFillImage;
     public int dayEarnings = 0;
@@ -213,6 +215,7 @@ public class CustomerOrderManager : MonoBehaviour
 
         currentReputation += 3;
         completedOrders++;
+        totalOrdersFulfilled++;
 
         UpdateReputationUI();
 
@@ -226,6 +229,7 @@ public class CustomerOrderManager : MonoBehaviour
     private void FailOrder(CustomerOrder order)
     {
         currentReputation -= 5;
+        totalOrdersFailed++;
         UpdateReputationUI();
 
         Destroy(orderUIObjects[order]);
