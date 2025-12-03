@@ -105,6 +105,14 @@ public class PickUpSystem : MonoBehaviour
         isHoldingItem = true;
     }
 
+    public GameObject item()
+    {
+        heldItem.GetComponent<MeshCollider>().enabled = true;
+        heldItem.transform.SetParent(null);
+        isHoldingItem = false;
+        return heldItem;
+    }
+
     public void PickUpItem()
     {
         if (currentItem == null) return;

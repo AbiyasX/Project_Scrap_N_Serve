@@ -8537,6 +8537,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: +- Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6764850823153071206, guid: f87d6c2748fcfb6418013e628f710b4f, type: 3}
+      propertyPath: rayHeight
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764850823153071206, guid: f87d6c2748fcfb6418013e628f710b4f, type: 3}
+      propertyPath: interactRadius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764850823153071206, guid: f87d6c2748fcfb6418013e628f710b4f, type: 3}
+      propertyPath: forwardDistance
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

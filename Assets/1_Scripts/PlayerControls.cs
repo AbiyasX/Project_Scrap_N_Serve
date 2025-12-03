@@ -22,6 +22,8 @@ public class PlayerControls : MonoBehaviour
     bool isDashing = false;
     [Header("Interaction")]
     [SerializeField] private float rayHeight = 1.5f;
+    [SerializeField] private float forwardDistance = 1f;
+    [SerializeField] private float interactRadius = 1.5f;
     [Header("VFX Particle")]
     [SerializeField] ParticleSystem walkVFX;
     [SerializeField] GameObject prefabFlashLight;
@@ -71,8 +73,7 @@ public class PlayerControls : MonoBehaviour
 
     private void Interact_performed(InputAction.CallbackContext obj)
     {
-        float interactRadius = 1.5f;
-        Vector3 center = transform.position + Vector3.up * rayHeight;
+        Vector3 center = transform.position + Vector3.up * rayHeight + transform.forward * forwardDistance;
 
         Collider[] hits = Physics.OverlapSphere(center, interactRadius, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Collide);
 
@@ -89,9 +90,7 @@ public class PlayerControls : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Vector3 center = transform.position + Vector3.up * rayHeight;
-        float interactRadius = 1.5f;
-
+        Vector3 center = transform.position + Vector3.up * rayHeight + transform.forward * forwardDistance;    
         Gizmos.color = new Color(0, 1, 0, 0.3f);
         Gizmos.DrawWireSphere(center, interactRadius);
     }
