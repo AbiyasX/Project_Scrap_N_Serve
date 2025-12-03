@@ -3873,6 +3873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   Cog_currentCurrency: 10000
   cogsUIText: {fileID: 1531507994}
+  cogAnim: {fileID: 0}
 --- !u!114 &1174923907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3960,6 +3961,8 @@ MonoBehaviour:
   completedOrders: 0
   delayOrder: 5
   deliveryZone: {fileID: 4505218233531526869}
+  totalOrdersFulfilled: 0
+  totalOrdersFailed: 0
   currentReputation: 30
   repFillImage: {fileID: 0}
   dayEarnings: 0
@@ -3980,9 +3983,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShiftManager
   mainLight: {fileID: 410087040}
   orderManager: {fileID: 1174923908}
-  nextDayButton: {fileID: 596268531}
+  SurfaceLadder: {fileID: 0}
   nextDay: {fileID: 870636533}
   timeFillImage: {fileID: 0}
+  stopWatchAnim: {fileID: 0}
+  gameOverPanel: {fileID: 0}
   dayLightIntensity: 1.38
   nightLightIntensity: 0.48
   dayLightColor: {r: 1, g: 1, b: 1, a: 1}
@@ -5253,7 +5258,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 255
 --- !u!114 &1668659464
 MonoBehaviour:
   m_ObjectHideFlags: 0
