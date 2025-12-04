@@ -11,10 +11,16 @@ public class AudioManager : MonoBehaviour
         ApplySettings();
     }
 
+    public float ToDecibel(float value)
+    {
+        return Mathf.Log10(Mathf.Clamp(value, 0.0001f, 1f)) * 20f;
+    }
+
     public void ApplySettings()
     {
-        mixer.SetFloat("MasterVolume", Mathf.Log10(soundSettings.masterVolume) * 20);
-        mixer.SetFloat("MusicVolume", Mathf.Log10(soundSettings.musicVolume) * 20);
-        mixer.SetFloat("SFXVolume", Mathf.Log10(soundSettings.sfxVolume) * 20);
+        mixer.SetFloat("MasterVolume", ToDecibel(soundSettings.masterVolume));
+        mixer.SetFloat("MusicVolume", ToDecibel(soundSettings.musicVolume));
+        mixer.SetFloat("SFXVolume", ToDecibel(soundSettings.sfxVolume));
     }
+
 }

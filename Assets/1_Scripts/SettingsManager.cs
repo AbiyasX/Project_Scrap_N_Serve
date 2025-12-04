@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class SettingsManager : MonoBehaviour
 {
     public SoundSettings soundSettings;
+    public AudioManager audioManager;
 
     [Header("UI Sliders")]
     public Slider masterSlider;
@@ -28,16 +29,19 @@ public class SettingsManager : MonoBehaviour
     void OnMasterChanged(float value)
     {
         soundSettings.masterVolume = value;
+        audioManager.ApplySettings();
     }
 
     void OnMusicChanged(float value)
     {
         soundSettings.musicVolume = value;
+        audioManager.ApplySettings();
     }
 
     void OnSFXChanged(float value)
     {
         soundSettings.sfxVolume = value;
+        audioManager.ApplySettings();
     }
 
     public void SettingsButtonClicked()
