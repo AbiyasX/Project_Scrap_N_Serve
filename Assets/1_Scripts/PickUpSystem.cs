@@ -117,6 +117,12 @@ public class PickUpSystem : MonoBehaviour
     {
         if (currentItem == null) return;
         if (isHoldingItem) return;
+
+        if (AudioManager.Instance != null && AudioManager.Instance.soundSettings.itemPickUpSound != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.soundSettings.itemPickUpSound);
+        }
+
         AssemblySystem.Instance.RemoveItemManually(currentItem);
         Rigidbody rb = currentItem.GetComponent<Rigidbody>();
 

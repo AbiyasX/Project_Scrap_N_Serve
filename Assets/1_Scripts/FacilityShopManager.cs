@@ -79,6 +79,13 @@ public class FacilityShopManager : MonoBehaviour
             orderMenuManager.AddMaterialToMenu(facility.productionMaterial, currentLot.GetCurrentLevel(), currentLot);
             currentLot.isPurchaseLot(true, facility);
             currencyManager.SpendMoney(facility.facilityCost);
+
+            if (AudioManager.Instance != null && AudioManager.Instance.soundSettings.facilityBuySound != null)
+            {
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.soundSettings.facilityBuySound);
+            }
+
+
             facility.isPurchased = true;
             button.interactable = false;
             costText.text = "Purchased";

@@ -38,6 +38,11 @@ public class LadderPortal : MonoBehaviour, Iinteract
     {
         isSwitching = true;
 
+        if (AudioManager.Instance != null && AudioManager.Instance.soundSettings.ladderTransitionSound != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.soundSettings.ladderTransitionSound);
+        }
+
         // Fade Out
         yield return StartCoroutine(Fade(1f));
 

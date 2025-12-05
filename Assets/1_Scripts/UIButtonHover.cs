@@ -17,6 +17,11 @@ public class UIButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         rect.DOKill(true);
         rect.DOScale(hoverScale, 0.15f).SetEase(Ease.OutSine);
+
+        if (AudioManager.Instance != null && AudioManager.Instance.soundSettings != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.soundSettings.buttonHoverSound);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -29,5 +34,10 @@ public class UIButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         rect.DOKill(true);
         rect.DOPunchScale(new Vector3(0.1f, 0.1f, 0.1f), 0.2f, 5, 1f);
+
+        if (AudioManager.Instance != null && AudioManager.Instance.soundSettings != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.soundSettings.buttonClickSound);
+        }
     }
 }

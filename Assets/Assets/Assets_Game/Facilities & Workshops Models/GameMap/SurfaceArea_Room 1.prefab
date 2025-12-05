@@ -403,7 +403,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 255
 --- !u!114 &2835818909211333976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2034,6 +2034,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2a57f25f804d84841a48f0dcebfaf3d3, type: 2}
   productSpawnPoint: {fileID: 3033494004999661594}
   itemLayerName: Item
+  itemsOnTable: []
 --- !u!1 &4323053602706565798
 GameObject:
   m_ObjectHideFlags: 0
@@ -3308,6 +3309,7 @@ MonoBehaviour:
   materialButtonPrefab: {fileID: 5598379701669204724, guid: efe58de0b738a244fab0d37ab0867b7c, type: 3}
   OrderQueueUI: {fileID: 6161938637904647550}
   ItemQueueUI: {fileID: 2099580839392623766, guid: b3542cca765b97c43bec636c49498320, type: 3}
+  orderHighLight: {fileID: 0}
   timer: 0
 --- !u!1 &7872327248169002333
 GameObject:

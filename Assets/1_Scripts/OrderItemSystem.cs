@@ -88,6 +88,11 @@ public class OrderMaterialSystem : MonoBehaviour, Iinteract
             yield return null;
         }
 
+        if (AudioManager.Instance != null && AudioManager.Instance.soundSettings.itemSpawnSound != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.soundSettings.itemSpawnSound);
+        }
+
         GameObject spawnedItem = Instantiate(material.materialPrefab, spawnItemTransform.position, spawnItemTransform.rotation);
         spawnedItem.name = material.name;
         Rigidbody rb = spawnedItem.GetComponent<Rigidbody>();

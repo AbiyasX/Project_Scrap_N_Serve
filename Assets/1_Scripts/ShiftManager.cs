@@ -83,6 +83,10 @@ public class ShiftManager : MonoBehaviour
 
     private void OnNextDayClicked()
     {
+        if (AudioManager.Instance != null && AudioManager.Instance.soundSettings.sleepTransitionSound != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.soundSettings.sleepTransitionSound);
+        }
         nextDayClicked = true;
     }
 
@@ -280,6 +284,11 @@ public class ShiftManager : MonoBehaviour
             }
 
             yield return null;
+        }
+
+        if (AudioManager.Instance != null && AudioManager.Instance.soundSettings.endShiftSound != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.soundSettings.endShiftSound);
         }
 
         timeFillImage.fillAmount = 1f;

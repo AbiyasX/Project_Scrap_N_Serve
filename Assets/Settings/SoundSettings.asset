@@ -15,3 +15,15 @@ MonoBehaviour:
   masterVolume: 1
   musicVolume: 1
   sfxVolume: 1
+  buttonClickSound: {fileID: 8300000, guid: 2171626337a0eef4d9f59cd5dbfb5f07, type: 3}
+  buttonHoverSound: {fileID: 8300000, guid: 37aa273820fb71b4cb69549ee8655c36, type: 3}
+  footstepSounds:
+  - {fileID: 8300000, guid: 30686fb25bb4c964eb5542d7625f8dfc, type: 3}
+  - {fileID: 8300000, guid: de2f95ce5a0888d4b8f45fd4f531570d, type: 3}
+  - {fileID: 8300000, guid: c2b4cbbc7d6f1fd43b3d335b99d27ecb, type: 3}
+  itemPickUpSound: {fileID: 8300000, guid: 0d0f5dabd3a069f44b57437b30979352, type: 3}
+  itemSpawnSound: {fileID: 8300000, guid: c25ca2ae228548540a0c1cf3c487057e, type: 3}
+  facilityBuySound: {fileID: 8300000, guid: a77a0fa11c82914419d98b7d63d3539f, type: 3}
+  sleepTransitionSound: {fileID: 8300000, guid: ce8367002132d354da01ec23fa732ade, type: 3}
+  ladderTransitionSound: {fileID: 8300000, guid: 9e5bfcea4d0a3894e936538e869fcaa8, type: 3}
+  endShiftSound: {fileID: 8300000, guid: c1c7d274831eddf41840fec631e01b03, type: 3}
