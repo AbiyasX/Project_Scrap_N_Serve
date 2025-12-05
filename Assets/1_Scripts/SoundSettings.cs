@@ -29,4 +29,6 @@ public class SoundSettings : ScriptableObject
     public AudioClip newOrderSound;
     public AudioClip orderFailedSound;
     public AudioClip orderCompleteSound;
+    public AudioClip CogsSpent;
+    public AudioClip craftCompleteSound;
 }
