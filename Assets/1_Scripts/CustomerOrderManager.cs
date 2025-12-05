@@ -222,6 +222,11 @@ public class CustomerOrderManager : MonoBehaviour
         completedOrders++;
         totalOrdersFulfilled++;
 
+        if (AudioManager.Instance != null && AudioManager.Instance.soundSettings.orderCompleteSound != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.soundSettings.orderCompleteSound);
+        }
+
         UpdateReputationUI();
 
         Destroy(orderUIObjects[order]);

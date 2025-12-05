@@ -27,5 +27,6 @@ public class SoundSettings : ScriptableObject
     public AudioClip ladderTransitionSound;
     public AudioClip endShiftSound;
     public AudioClip newOrderSound;
-    public AudioClip orderFailedSound; 
+    public AudioClip orderFailedSound;
+    public AudioClip orderCompleteSound;
 }
