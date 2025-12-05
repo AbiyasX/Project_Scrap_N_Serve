@@ -122,8 +122,6 @@ public class PickUpSystem : MonoBehaviour
         {
             AudioManager.Instance.PlaySFX(AudioManager.Instance.soundSettings.itemPickUpSound);
         }
-
-        AssemblySystem.Instance.RemoveItemManually(currentItem);
         Rigidbody rb = currentItem.GetComponent<Rigidbody>();
 
         TableScript[] allTables = FindObjectsByType<TableScript>(FindObjectsSortMode.None);
