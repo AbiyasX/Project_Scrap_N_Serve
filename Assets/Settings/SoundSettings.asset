@@ -30,3 +30,5 @@ MonoBehaviour:
   newOrderSound: {fileID: 8300000, guid: 3d198f920ac602943ba168fdb0413c39, type: 3}
   orderFailedSound: {fileID: 8300000, guid: 7be3f4232c76ab4418ab8746be2762f9, type: 3}
   orderCompleteSound: {fileID: 8300000, guid: f7575196674084b44af95829c9008685, type: 3}
+  CogsSpent: {fileID: 8300000, guid: adc7b549b6ac38b4f869c3943b9023f8, type: 3}
+  craftCompleteSound: {fileID: 8300000, guid: c18ec95a3d501a1498305cf19d9d66ef, type: 3}
