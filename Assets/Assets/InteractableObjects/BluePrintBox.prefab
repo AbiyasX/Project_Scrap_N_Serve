@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4164063660291449160
 Transform:
   m_ObjectHideFlags: 0
@@ -124,19 +124,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6e3cc595cb58a6440bd8146f67be154d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.563
+      value: -0.658
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6e3cc595cb58a6440bd8146f67be154d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.946164
+      value: 19.66
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6e3cc595cb58a6440bd8146f67be154d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -32.936
+      value: 14.411
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6e3cc595cb58a6440bd8146f67be154d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92387956
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6e3cc595cb58a6440bd8146f67be154d, type: 3}
       propertyPath: m_LocalRotation.x
@@ -144,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6e3cc595cb58a6440bd8146f67be154d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.38268343
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6e3cc595cb58a6440bd8146f67be154d, type: 3}
       propertyPath: m_LocalRotation.z
@@ -156,7 +156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6e3cc595cb58a6440bd8146f67be154d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -45
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6e3cc595cb58a6440bd8146f67be154d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -249,3 +249,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlueprintBoxScript
   bluePrintPrefab: {fileID: 5077936638159559631, guid: ac02eb7b5717f744a86ebe086edcd009, type: 3}
+  highlight: {fileID: 3397983976171615527}
