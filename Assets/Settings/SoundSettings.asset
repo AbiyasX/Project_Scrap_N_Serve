@@ -27,3 +27,5 @@ MonoBehaviour:
   sleepTransitionSound: {fileID: 8300000, guid: ce8367002132d354da01ec23fa732ade, type: 3}
   ladderTransitionSound: {fileID: 8300000, guid: 9e5bfcea4d0a3894e936538e869fcaa8, type: 3}
   endShiftSound: {fileID: 8300000, guid: c1c7d274831eddf41840fec631e01b03, type: 3}
+  newOrderSound: {fileID: 8300000, guid: 3d198f920ac602943ba168fdb0413c39, type: 3}
+  orderFailedSound: {fileID: 8300000, guid: 7be3f4232c76ab4418ab8746be2762f9, type: 3}
