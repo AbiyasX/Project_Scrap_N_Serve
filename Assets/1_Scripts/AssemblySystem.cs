@@ -157,6 +157,11 @@ public class AssemblySystem : MonoBehaviour
             }
         }
 
+        if (AudioManager.Instance != null && AudioManager.Instance.soundSettings.craftCompleteSound != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.soundSettings.craftCompleteSound);
+        }
+
         yield return null;
         GameObject Product = Instantiate(recipe.product.materialPrefab, productSpawnPoint.position, Quaternion.identity);
         Product.name = recipe.product.materialName;

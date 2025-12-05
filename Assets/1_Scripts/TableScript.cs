@@ -17,26 +17,31 @@ public class TableScript : MonoBehaviour, IPickUp, Iinteract
 
     private void onPlace(GameObject item)
     {
-        
         if (item == null) return;
-        Rigidbody rb = onTable.GetComponent<Rigidbody>();
+
+        Rigidbody rb = item.GetComponent<Rigidbody>();
         if (rb)
         {
             rb.isKinematic = true;
             rb.useGravity = false;
         }
 
-        Bounds tableBounds = GetComponent<Renderer>().bounds;
-        float tableTopY = tableBounds.max.y;
+        onTable = item;
 
-        Bounds itemBounds = item.GetComponentInChildren<Renderer>().bounds;
-        float itemBottomY = itemBounds.min.y;
+        Collider tableCollider = GetComponent<Collider>();
+        if (tableCollider == null) return;
 
-        float heightAdjustment = tableTopY - itemBottomY;
+        Collider itemCollider = item.GetComponentInChildren<Collider>();
+        if (itemCollider == null) return;
+
+        Bounds tableBounds = tableCollider.bounds;
+        Bounds itemBounds = itemCollider.bounds;
+
+        Vector3 newPosition = new Vector3(tableBounds.center.x, tableBounds.max.y + itemBounds.extents.y, tableBounds.center.z);
 
         item.transform.SetParent(null);
-        item.transform.position += new Vector3(0f, heightAdjustment, 0f);
-
+        item.transform.position = newPosition;
+        item.transform.rotation = tableHolder.transform.rotation;
     }
 
     public void Pickup()

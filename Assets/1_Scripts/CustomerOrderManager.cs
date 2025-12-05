@@ -153,6 +153,11 @@ public class CustomerOrderManager : MonoBehaviour
         order.timeRemaining = order.totalTime;
         orderUIObjects.Add(order, ui);
 
+        if (AudioManager.Instance != null && AudioManager.Instance.soundSettings.newOrderSound != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.soundSettings.newOrderSound);
+        }
+
         Debug.Log("Order UI generated successfully!");
     }
 
@@ -217,6 +222,11 @@ public class CustomerOrderManager : MonoBehaviour
         completedOrders++;
         totalOrdersFulfilled++;
 
+        if (AudioManager.Instance != null && AudioManager.Instance.soundSettings.orderCompleteSound != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.soundSettings.orderCompleteSound);
+        }
+
         UpdateReputationUI();
 
         Destroy(orderUIObjects[order]);
@@ -230,6 +240,10 @@ public class CustomerOrderManager : MonoBehaviour
     {
         currentReputation -= 5;
         totalOrdersFailed++;
+        if (AudioManager.Instance != null && AudioManager.Instance.soundSettings.orderFailedSound != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.soundSettings.orderFailedSound);
+        }
         UpdateReputationUI();
 
         Destroy(orderUIObjects[order]);

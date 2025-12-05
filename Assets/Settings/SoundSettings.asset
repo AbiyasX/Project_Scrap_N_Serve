@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1962c2492ffead94ca27f7eae3752b01, type: 3}
   m_Name: SoundSettings
   m_EditorClassIdentifier: Assembly-CSharp::SoundSettings
-  masterVolume: 1
-  musicVolume: 1
-  sfxVolume: 1
+  masterVolume: 0.34156415
+  musicVolume: 0.53113043
+  sfxVolume: 0.46452507
   buttonClickSound: {fileID: 8300000, guid: 2171626337a0eef4d9f59cd5dbfb5f07, type: 3}
   buttonHoverSound: {fileID: 8300000, guid: 37aa273820fb71b4cb69549ee8655c36, type: 3}
   footstepSounds:
@@ -27,3 +27,8 @@ MonoBehaviour:
   sleepTransitionSound: {fileID: 8300000, guid: ce8367002132d354da01ec23fa732ade, type: 3}
   ladderTransitionSound: {fileID: 8300000, guid: 9e5bfcea4d0a3894e936538e869fcaa8, type: 3}
   endShiftSound: {fileID: 8300000, guid: c1c7d274831eddf41840fec631e01b03, type: 3}
+  newOrderSound: {fileID: 8300000, guid: 3d198f920ac602943ba168fdb0413c39, type: 3}
+  orderFailedSound: {fileID: 8300000, guid: 7be3f4232c76ab4418ab8746be2762f9, type: 3}
+  orderCompleteSound: {fileID: 8300000, guid: f7575196674084b44af95829c9008685, type: 3}
+  CogsSpent: {fileID: 8300000, guid: adc7b549b6ac38b4f869c3943b9023f8, type: 3}
+  craftCompleteSound: {fileID: 8300000, guid: c18ec95a3d501a1498305cf19d9d66ef, type: 3}

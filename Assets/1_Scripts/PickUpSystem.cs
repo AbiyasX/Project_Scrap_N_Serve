@@ -8,6 +8,9 @@ public interface IPickUp
 
 public class PickUpSystem : MonoBehaviour
 {
+    // Static reference to currently held item (accessible by all workstations)
+    public static GameObject CurrentHeldItem { get; private set; }
+
     [SerializeField] private float pickupRange = 1f;
     [SerializeField] private float sphereRadius = 1f;
     [SerializeField] private LayerMask itemLayer;
@@ -85,8 +88,8 @@ public class PickUpSystem : MonoBehaviour
     {
         if (item == null) return;
         if (isHoldingItem) return;
-        
-        
+
+
         Rigidbody rb = item.GetComponent<Rigidbody>();
         if (rb)
         {
@@ -103,6 +106,9 @@ public class PickUpSystem : MonoBehaviour
         item.transform.localRotation = Quaternion.identity;
         heldItem = item;
         isHoldingItem = true;
+
+        // Update static reference
+        CurrentHeldItem = heldItem;
     }
 
     public GameObject item()
@@ -110,6 +116,15 @@ public class PickUpSystem : MonoBehaviour
         heldItem.GetComponent<MeshCollider>().enabled = true;
         heldItem.transform.SetParent(null);
         isHoldingItem = false;
+
+        // Clear static reference
+        CurrentHeldItem = null;
+
+        return heldItem;
+    }
+
+    public GameObject holdingItem()
+    {
         return heldItem;
     }
 
@@ -122,8 +137,6 @@ public class PickUpSystem : MonoBehaviour
         {
             AudioManager.Instance.PlaySFX(AudioManager.Instance.soundSettings.itemPickUpSound);
         }
-
-        AssemblySystem.Instance.RemoveItemManually(currentItem);
         Rigidbody rb = currentItem.GetComponent<Rigidbody>();
 
         TableScript[] allTables = FindObjectsByType<TableScript>(FindObjectsSortMode.None);
@@ -148,16 +161,19 @@ public class PickUpSystem : MonoBehaviour
         currentItem.transform.SetParent(itemHolder);
         currentItem.transform.localPosition = Vector3.zero;
         currentItem.transform.localRotation = Quaternion.identity;
-   
+        holdingItem();
         heldItem = currentItem;
         currentItem = null;
         isHoldingItem = true;
+
+        // Update static reference
+        CurrentHeldItem = heldItem;
     }
 
     public void DropItem()
     {
         if (!isHoldingItem || heldItem == null) return;
-        
+
         Rigidbody rb = heldItem.GetComponent<Rigidbody>();
         if (rb)
         {
@@ -169,12 +185,15 @@ public class PickUpSystem : MonoBehaviour
         heldItem.transform.SetParent(null);
         heldItem = null;
         isHoldingItem = false;
+
+        // Clear static reference
+        CurrentHeldItem = null;
     }
 
     public void ChargeAndThrow(bool isPressed)
     {
         if (!isHoldingItem || heldItem == null) return;
-        
+
         if (isPressed)
         {
             // Start charging
@@ -208,6 +227,9 @@ public class PickUpSystem : MonoBehaviour
             heldItem = null;
             isHoldingItem = false;
             throwCharge = 0f;
+
+            // Clear static reference
+            CurrentHeldItem = null;
         }
     }
 
